@@ -10,7 +10,7 @@
     let show = false;
     export let darkModeEnabled = true;
     onMount(() => {
-        darkModeEnabled = Cookies.get("theme") === "dark";
+        darkModeEnabled = Cookies.get("theme") !== "light"; // defaults to dark if no cookies found
         show = true;
     });
 </script>
