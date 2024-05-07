@@ -33,19 +33,21 @@
 </script>
 
 <div id="buttonParent">
-    <div class="decor" id="upleft"></div>
-    <div class="decor" id="upright"></div>
-    <div class="decor" id="downleft"></div>
-    <div class="decor" id="downright"></div>
+    {#if !selected}
+        <div class="decor" id="upleft"></div>
+        <div class="decor" id="upright"></div>
+        <div class="decor" id="downleft"></div>
+        <div class="decor" id="downright"></div>
+    {/if}
     <button on:click={onclick} class:selected {style}>
-        <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <clipPath id={key} clipPathUnits="objectBoundingBox">
-                    <path d={path} fill="black" />
-                </clipPath>
-            </defs>
-        </svg>
         {#if path}
+            <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id={key} clipPathUnits="objectBoundingBox">
+                        <path d={path} fill="black" />
+                    </clipPath>
+                </defs>
+            </svg>
             <div class="icon" style="clip-path: url('#{key}');" />
         {/if}
         <slot />
@@ -55,7 +57,7 @@
 <style>
     .decor {
         position: absolute;
-        background-color: red;
+        background-color: var(--orange);
 
         width: 1rem;
         height: 1rem;
@@ -63,11 +65,20 @@
         transition: transform 0.2s ease-out;
         transform: translate(0, 0);
     }
-    button{
+    button {
         position: relative;
 
-        background: none;
-        border: none;
+        background: var(--fg0);
+        border: var(--fg1);
+
+        font-size: large;
+        color: var(--bg1);
+
+        padding: 0.75rem;
+    }
+
+    button:active {
+        transform: scale(0.9);
     }
 
     #buttonParent:hover > .decor {
@@ -75,7 +86,7 @@
     }
 
     #buttonParent:hover {
-        filter: brightness(1.1);
+        filter: brightness(1.2);
     }
 
     #buttonParent {
@@ -86,32 +97,32 @@
     }
 
     #upleft {
-        --offsetX: -0.1rem;
-        --offsetY: -0.1rem;
+        --offsetX: -0.2rem;
+        --offsetY: -0.2rem;
 
         left: 0;
         top: 0;
     }
 
     #upright {
-        --offsetX: 0.1rem;
-        --offsetY: -0.1rem;
+        --offsetX: 0.2rem;
+        --offsetY: -0.2rem;
 
         top: 0;
         right: 0;
     }
 
     #downleft {
-        --offsetX: -0.1rem;
-        --offsetY: 0.1rem;
+        --offsetX: -0.2rem;
+        --offsetY: 0.2rem;
 
         bottom: 0;
         left: 0;
     }
 
     #downright {
-        --offsetX: 0.1rem;
-        --offsetY: 0.1rem;
+        --offsetX: 0.2rem;
+        --offsetY: 0.2rem;
 
         bottom: 0;
         right: 0;

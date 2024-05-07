@@ -4,14 +4,17 @@
 
     let navTargets: NavItem[] = [
         {
-            href:"test",
-            name:"TEST"
+            href: "/",
+            name: "Home",
         },
         {
-            href:"test2",
-            name:"TEST2"
+            href: "test1",
+            name: "TEST 1",
         },
-
+        {
+            href: "test2",
+            name: "TEST 2",
+        },
     ];
 </script>
 

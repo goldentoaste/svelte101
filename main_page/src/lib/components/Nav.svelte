@@ -10,11 +10,22 @@
     import ThemeButton from "./ThemeButton.svelte";
 
     export let items: NavItem[];
+    let selectedIndex = 0;
 </script>
 
 <nav id="navParent">
-    {#each items as navItem}
-        <Button href={navItem.href}>
+    <div style="display: flex; flex-direction:row; align-items:center; gap:0.5rem;">
+        <img src="./svelte.svg" alt="svelte logo">
+        <h1>
+            Svelte Intro!
+        </h1>
+    </div>
+    {#each items as navItem, index}
+        <Button href={navItem.href} on:click={()=>{
+            selectedIndex = index;
+        }}
+        selected={selectedIndex == index}
+        >
             {navItem.name}
         </Button>
     {/each}
@@ -23,6 +34,13 @@
 </nav>
 
 <style>
+    img{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    h1 {
+        margin: 0;
+    }
     nav {
         position: fixed;
         box-sizing: border-box;
@@ -40,5 +58,9 @@
         padding: 1rem;
         padding-left: 4rem;
         padding-right: 2rem;
+
+        overflow: hidden;
+
+        border-bottom: 3px solid var(--fg0);
     }
 </style>

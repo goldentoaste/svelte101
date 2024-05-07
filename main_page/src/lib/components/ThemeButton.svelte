@@ -15,6 +15,11 @@
     });
 </script>
 
+<svelte:head>
+    <link rel="preload" href="./sun.svg" />
+    <link rel="preload" href="./moon.svg" />
+</svelte:head>
+
 {#if show}
     <button
         transition:fade
@@ -34,7 +39,7 @@
         }}
         {style}
     >
-        {#if darkModeEnabled}
+        {#key darkModeEnabled}
             <img
                 in:fly={{
                     duration: 400,
@@ -44,34 +49,19 @@
                     duration: 400,
                     x: 50,
                 }}
-                class="darkIcon"
-                src="./moon.svg"
-                alt="darkMode"
+                class={darkModeEnabled?"darkIcon":"lightIcon"}
+                src={darkModeEnabled?"./moon.svg":"./sun.svg"}
+                alt="toggle dark mode"
             />
-        {/if}
+        {/key}
 
-        {#if !darkModeEnabled}
-            <img
-                in:fly={{
-                    duration: 200,
-                    x: -50,
-                }}
-                out:fly={{
-                    duration: 200,
-                    x: 50,
-                }}
-                class="lightIcon"
-                src="./sun.svg"
-                alt="lightMode"
-            />
-        {/if}
     </button>
 {/if}
 
 <style>
     button {
         position: relative;
-        box-sizing: border-box;
+    
         transition: border 0.2s ease-out;
 
         width: 2rem;
@@ -81,6 +71,9 @@
 
         border: none;
         background: none;
+        
+        border: 2px solid var(--bg4);
+        
     }
 
     button:hover {
@@ -88,10 +81,14 @@
     }
 
     img {
-        color: var(--fg0);
+        color: var(--fg0);  
         position: absolute;
-        left: 0.25rem;
-        top: 0.25rem;
+
+        top:50%;
+        left:50%;
+
+        transform: translate(-50%, -50%);
+
         width: 1.5rem;
         height: 1.5rem;
     }
