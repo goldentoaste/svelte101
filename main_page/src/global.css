@@ -1,0 +1,18 @@
+[data-theme='dark'] {
+    --bg0: #282828;
+}
+
+[data-theme='light'] {
+    --bg0: #fbf1c7;
+}
+
+body {
+    --navBarHeight: 5rem;
+
+    background-color: var(--bg0);
+    padding-top: calc(var(--navBarHeight) + 2rem);
+
+    transition-property: background-color;
+    transition-duration: 400ms;
+    transition-timing-function: ease-out;
+}
