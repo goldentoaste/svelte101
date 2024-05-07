@@ -31,6 +31,7 @@
 
 body {
     --navBarHeight: 5rem;
+    --glow: #5a524c;
 
     background-color: var(--bg0);
     padding-top: calc(var(--navBarHeight) + 2rem);
@@ -38,4 +39,13 @@ body {
     transition-property: background-color;
     transition-duration: 400ms;
     transition-timing-function: ease-out;
+
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 300;
+
+    color: var(--fg1);
+}
+
+h1{
+    font-weight: 500;
 }

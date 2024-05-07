@@ -11,6 +11,7 @@
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
     import { createEventDispatcher } from "svelte";
+    import { fly } from "svelte/transition";
     export let href: string = "";
     export let path: string = "";
     export let selected: boolean = false;
@@ -34,12 +35,45 @@
 
 <div id="buttonParent">
     {#if !selected}
-        <div class="decor" id="upleft"></div>
-        <div class="decor" id="upright"></div>
-        <div class="decor" id="downleft"></div>
-        <div class="decor" id="downright"></div>
+        <div
+            out:fly={{
+                duration: 400,
+                x: -3,
+                y: -3,
+            }}
+            class="decor"
+            id="upleft"
+        ></div>
+        <div
+            out:fly={{
+                duration: 400,
+                x: 3,
+                y: -3,
+            }}
+            class="decor"
+            id="upright"
+        ></div>
+        <div
+            out:fly={{
+                duration: 400,
+                x: -3,
+                y: 3,
+            }}
+            class="decor"
+            id="downleft"
+        ></div>
+        <div
+            out:fly={{
+                duration: 400,
+                x: 3,
+                y: 3,
+            }}
+            class="decor"
+            id="downright"
+        ></div>
     {/if}
-    <button on:click={onclick} class:selected {style}>
+    <div id="backplate" class:selected></div>
+    <button on:click={onclick}  {style}>
         {#if path}
             <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -65,20 +99,34 @@
         transition: transform 0.2s ease-out;
         transform: translate(0, 0);
     }
-    button {
-        position: relative;
+
+    #backplate {
+        position: absolute;
+        left: 0;
+        top: 0;
 
         background: var(--fg0);
+        width: 100%;
+        height: 100%;
+    }
+
+    .selected {
+        padding-bottom: 2rem;
+        transition: padding 0.4s ease-out;
+
+    }
+
+    button {
+        position: relative;
         border: var(--fg1);
 
+
+        background-color: transparent;
         font-size: large;
         color: var(--bg1);
 
         padding: 0.75rem;
-    }
 
-    button:active {
-        transform: scale(0.9);
     }
 
     #buttonParent:hover > .decor {
@@ -86,7 +134,14 @@
     }
 
     #buttonParent:hover {
+        transform: scale(1.05);
         filter: brightness(1.2);
+        box-shadow: 0px 0px 20px var(--glow);
+    }
+
+    #buttonParent:active {
+        transform: scale(0.95);
+        filter: brightness(0.95);
     }
 
     #buttonParent {
@@ -94,6 +149,8 @@
         position: relative;
         height: fit-content;
         width: fit-content;
+
+        transition: all 0.2s ease-out;
     }
 
     #upleft {
