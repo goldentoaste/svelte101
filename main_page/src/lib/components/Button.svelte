@@ -29,7 +29,7 @@
                 noScroll: true,
             });
         }
-        dispatch("click", e.detail);
+        dispatch("click", e);
     }
 </script>
 
@@ -72,8 +72,8 @@
             id="downright"
         ></div>
     {/if}
-    <div id="backplate" class:selected></div>
-    <button on:click={onclick}  {style}>
+    <div id="backplate"></div>
+    <button on:click={onclick} {style}>
         {#if path}
             <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -110,16 +110,9 @@
         height: 100%;
     }
 
-    .selected {
-        padding-bottom: 2rem;
-        transition: padding 0.4s ease-out;
-
-    }
-
     button {
         position: relative;
         border: var(--fg1);
-
 
         background-color: transparent;
         font-size: large;
@@ -127,6 +120,7 @@
 
         padding: 0.75rem;
 
+        border: var(--bg5) solid 2px;
     }
 
     #buttonParent:hover > .decor {
