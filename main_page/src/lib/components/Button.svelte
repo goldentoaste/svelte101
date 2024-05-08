@@ -17,6 +17,7 @@
     export let selected: boolean = false;
     export let key = "clip";
     export let style = "";
+    export let id = "";
 
     const dispatch = createEventDispatcher();
 
@@ -33,7 +34,7 @@
     }
 </script>
 
-<div id="buttonParent">
+<div class="buttonParent" {id}>
     {#if !selected}
         <div
             out:fly={{
@@ -123,22 +124,22 @@
         border: var(--bg5) solid 2px;
     }
 
-    #buttonParent:hover > .decor {
+    .buttonParent:hover > .decor {
         transform: translate(var(--offsetX), var(--offsetY));
     }
 
-    #buttonParent:hover {
-        transform: scale(1.05);
+    .buttonParent:hover {
+        
         filter: brightness(1.2);
         box-shadow: 0px 0px 20px var(--glow);
     }
 
-    #buttonParent:active {
+    .buttonParent:active {
         transform: scale(0.95);
         filter: brightness(0.95);
     }
 
-    #buttonParent {
+    .buttonParent {
         box-sizing: border-box;
         position: relative;
         height: fit-content;

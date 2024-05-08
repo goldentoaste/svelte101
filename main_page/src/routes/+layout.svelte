@@ -9,11 +9,15 @@
         },
         {
             href: "test1",
-            text: "TEST 1",
+            text: "Todo App",
+        },
+        {
+            href:"/",
+            text:"Further Readings"
         },
         {
             href: "test2",
-            text: "TEST 2",
+            text: "About",
         },
     ];
 </script>
