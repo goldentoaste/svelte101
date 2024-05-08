@@ -1,16 +1,16 @@
 <script context="module" lang="ts">
     export interface NavItem {
-        name: string;
+        text: string;
         href: string;
     }
 </script>
 
 <script lang="ts">
     import Button from "./Button.svelte";
+    import ButtonGroup from "./ButtonGroup.svelte";
     import ThemeButton from "./ThemeButton.svelte";
 
     export let items: NavItem[];
-    let selectedIndex = 0;
 </script>
 
 <nav id="navParent">
@@ -20,16 +20,7 @@
             Svelte Intro!
         </h1>
     </div>
-    {#each items as navItem, index}
-        <Button href={navItem.href} on:click={()=>{
-            selectedIndex = index;
-        }}
-        selected={selectedIndex == index}
-        >
-            {navItem.name}
-        </Button>
-    {/each}
-
+    <ButtonGroup buttonParams={items}/>
     <ThemeButton style="margin-left:auto;" />
 </nav>
 
