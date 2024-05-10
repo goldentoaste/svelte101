@@ -50,7 +50,7 @@
                     x: 50,
                 }}
                 class={darkModeEnabled?"darkIcon":"lightIcon"}
-                src={darkModeEnabled?"./moon.svg":"./sun.svg"}
+                src={darkModeEnabled?"/moon.svg":"/sun.svg"}
                 alt="toggle dark mode"
             />
         {/key}

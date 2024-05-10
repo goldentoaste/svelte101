@@ -1,5 +1,6 @@
 <script lang="ts">
     import Nav, { type NavItem } from "$lib/components/Nav.svelte";
+    import { fade } from "svelte/transition";
     import "../global.css";
 
     let navTargets: NavItem[] = [
@@ -12,8 +13,8 @@
             text: "Todo App",
         },
         {
-            href:"/",
-            text:"Further Readings"
+            href: "/",
+            text: "Further Readings",
         },
         {
             href: "test2",

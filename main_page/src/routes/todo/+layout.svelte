@@ -5,102 +5,16 @@
 
     let chapters: Chapter[] = [
         {
-            title: "Preface1",
+            route: "testchap",
+            title: "Test Chap",
             items: [
                 {
-                    href: "/",
-                    title: "Stuff",
+                    href: "testPage",
+                    title: "TEst 1",
                 },
                 {
-                    href: "/todo/testPage",
-                    title: "Tester",
-                },
-                {
-                    href: "/2",
-                    title: "Stuff",
-                },
-                {
-                    href: "/3",
-                    title: "Stuff",
-                },
-                {
-                    href: "/4",
-                    title: "Stuff",
-                },
-            ],
-        },
-        {
-            title: "Preface2",
-            items: [
-                {
-                    href: "/1",
-                    title: "Stuff",
-                },
-                {
-                    href: "/2",
-                    title: "Stuff",
-                },
-                {
-                    href: "/3",
-                    title: "Stuff",
-                },
-                {
-                    href: "/4",
-                    title: "Stuff",
-                },
-                {
-                    href: "/5",
-                    title: "Stuff",
-                },
-            ],
-        },
-        {
-            title: "Preface3",
-            items: [
-                {
-                    href: "/7",
-                    title: "Stuff",
-                },
-                {
-                    href: "/2",
-                    title: "Stuff",
-                },
-                {
-                    href: "/1",
-                    title: "Stuff",
-                },
-                {
-                    href: "/7111",
-                    title: "Stuff",
-                },
-                {
-                    href: "/1111",
-                    title: "Stuff",
-                },
-            ],
-        },
-        {
-            title: "Preface4",
-            items: [
-                {
-                    href: "/2",
-                    title: "Stuff1111111111111111111111111111111111111",
-                },
-                {
-                    href: "/1",
-                    title: "Stuff",
-                },
-                {
-                    href: "/21",
-                    title: "Stuff",
-                },
-                {
-                    href: "/22",
-                    title: "Stuff",
-                },
-                {
-                    href: "/76",
-                    title: "Stuff",
+                    href: "testpage2",
+                    title: "TEst 2",
                 },
             ],
         },
@@ -109,7 +23,7 @@
 
 <div id="page">
     <div id="left">
-        <TreeLayout {chapters}></TreeLayout>
+        <TreeLayout rootRoute="todo" {chapters}></TreeLayout>
     </div>
 
     <div id="center"><slot /></div>
@@ -120,15 +34,11 @@
 <style>
     #page {
         padding: 1rem;
-
         box-sizing: border-box;
-
         display: flex;
         flex-direction: row;
         width: 100dvw;
         max-width: 100%;
-
-        height: auto;
 
         overflow: visible;
     }
@@ -146,5 +56,14 @@
     #center {
         flex: 8;
         min-width: 800px;
+        padding: 1rem;
+        margin: 0 1rem;
+
+        min-height: 100%;
+
+        border-left: var(--bg5) solid 2px;
+        border-right: var(--bg5) solid 2px;
+
+        min-height: calc(100dvh - var(--topPad) - 4rem);
     }
 </style>
