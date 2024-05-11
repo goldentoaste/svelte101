@@ -3,6 +3,7 @@
 
     export interface Chapter {
         title: string;
+        route: string;
         items: ChapterItem[];
         open?: boolean;
     }
@@ -18,6 +19,7 @@
     import { fly } from "svelte/transition";
 
     export let chapters: Chapter[] = [];
+    export let rootRoute: string;
 
     let chapterSizes: number[] = [];
 
@@ -39,9 +41,10 @@
             chapterSizes.push(
                 document.getElementById("itemContainer" + i)?.scrollHeight!,
             );
-
-            for (let j = 0; j < chapters[i].items.length; j++) {
-                hrefToIndex[chapters[i].items[j].href] = [i, j];
+            const chapter = chapters[i];
+            const route = `/${rootRoute}/${chapter.route}/`;
+            for (let j = 0; j < chapter.items.length; j++) {
+                hrefToIndex[route + chapter.items[j].href] = [i, j];
             }
         }
     }
@@ -54,13 +57,16 @@
         const route = event.to?.route!.id;
 
         if (route !== undefined && route !== null) {
-            const fetched = hrefToIndex[route];
-            if (fetched !== undefined) {
-                [selectedChap, selectedItem] = fetched;
+            const target = hrefToIndex[route];
+            if (target) {
+                [selectedChap, selectedItem] = hrefToIndex[route];
             } else {
-                [selectedChap, selectedItem] = [-1, -1];
+                selectedChap = -1;
+                selectedItem = -1;
             }
-            // TODO handle not found
+        } else {
+            selectedChap = -1;
+            selectedItem = -1;
         }
     });
 </script>
@@ -68,6 +74,7 @@
 <div class="treeContainer">
     {#each chapters as chapter, chapIndex (chapter.title)}
         <div>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div
                 id={"" + chapIndex}
                 class="title"
@@ -82,11 +89,12 @@
             <div
                 class="itemWrapper"
                 style="max-height: {chapter.open
-                    ? chapterSizes[chapIndex] + 100
+                    ? chapterSizes[chapIndex] + 10
                     : 0}px"
             >
                 <div class="itemContainer" id={"itemContainer" + chapIndex}>
                     {#each chapter.items as item, itemIndex (item.href)}
+                        {@const route = `/${rootRoute}/${chapter.route}/`}
                         <div style="position: relative;">
                             {#if selectedChap === chapIndex && selectedItem === itemIndex}
                                 <div
@@ -96,7 +104,7 @@
                                     }}
                                 ></div>
                             {/if}
-                            <a href={item.href}
+                            <a href={route + item.href}
                                 >{chapIndex + 1}.{itemIndex + 1} {item.title}</a
                             >
                         </div>
@@ -114,11 +122,14 @@
         border: var(--bg5) solid 2px;
         min-width: 250px;
         width: fit-content;
+        height: fit-content;
+
+        max-height: 70vh;
     }
 
     .title {
         background-color: var(--bg2);
-
+        z-index: 2;
         position: sticky;
         top: 0px;
         color: var(--orange);

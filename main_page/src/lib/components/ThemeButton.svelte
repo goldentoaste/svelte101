@@ -49,8 +49,8 @@
                     duration: 400,
                     x: 50,
                 }}
-                class={darkModeEnabled ? "darkIcon" : "lightIcon"}
-                src={darkModeEnabled ? "/moon.svg" : "/sun.svg"}
+                class={darkModeEnabled?"darkIcon":"lightIcon"}
+                src={darkModeEnabled?"/moon.svg":"/sun.svg"}
                 alt="toggle dark mode"
             />
         {/key}

@@ -14,11 +14,11 @@
 </script>
 
 <nav id="navParent">
-    <div
-        style="display: flex; flex-direction:row; align-items:center; gap:0.5rem;"
-    >
-        <img src="/svelte.svg" alt="svelte logo" />
-        <h1>Svelte Intro!</h1>
+    <div style="display: flex; flex-direction:row; align-items:center; gap:0.5rem;">
+        <img src="/svelte.svg" alt="svelte logo">
+        <h1>
+            Svelte Intro!
+        </h1>
     </div>
     <ButtonGroup buttonParams={items} />
     <ThemeButton style="margin-left:auto;" />
@@ -35,6 +35,7 @@
     nav {
         position: fixed;
         box-sizing: border-box;
+        z-index: 999;
         top: 0;
         left: 0;
 
@@ -50,6 +51,8 @@
         padding: 1rem;
         padding-left: 4rem;
         padding-right: 2rem;
+
+        background-color: var(--bg1);
 
         overflow: hidden;
 
