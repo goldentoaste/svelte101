@@ -1,3 +1,8 @@
+<script>
+    import Highlight from "svelte-highlight";
+    import powershell from "svelte-highlight/languages/powershell";
+</script>
+
 <h1 class="title">Settiing Up the Environment</h1>
 <p>
     This sections includes everything you need to get start with Svelte. For
@@ -55,6 +60,15 @@
         <br />
         This template repo contains skeleton code for the todo app we will be making.
         It also has some css already to the app look nicer.
+
+        <br /> <br />
+        On the Github page there should be a green button, which looks like this
+        when clicked. Click "Open with Github Desktop" if you are using it.
+    </p>
+    <img src="/setups/git_clone.png" alt="" style="width: 400px;" />
+    <p>
+        You can also initialize a new Svelte from scratch if you want to:
+        <Highlight language={powershell} code="npm create svelte@latest my-app"></Highlight>
     </p>
 </section>
 
@@ -66,26 +80,66 @@
     <a href="https://code.visualstudio.com/"> Download Vscode Here</a>
 
     <p>
-        Vscode is a popular code editor that s  upports most languages and
+        Vscode is a popular code editor that s upports most languages and
         frameworks through extensions, in particular Svelte has first-party for
-        support for a vscode extension, and so will be used for this workshop. 
+        support for a vscode extension, and so will be used for this workshop.
         Installing vscode should be fairly straight forward.
-        
-        <br><br>
-        Some alternative IDEs are JetBrain's WebStorm, or NeoVim are viable as well, with third-party extensions.
+
+        <br /><br />
+        Some alternative IDEs are JetBrain's WebStorm, or NeoVim are viable as well,
+        with third-party extensions.
     </p>
 </section>
 
 <section>
     <h2>
-        <img src="/node.svg" alt="ndoe logo">
+        <img src="/node.svg" alt="ndoe logo" />
         Node.Js
     </h2>
 
     <a href="https://nodejs.org/en/download/current">Download Node Here</a>
 
-    NodeJs is a "javascript runtime environment". We will just use it as a package manager, and to initialize and run our project. 
-    Choosing all the default options in the Node.Js' install wizard should be fine.
+    NodeJs is a "javascript runtime environment". We will just use it as a
+    package manager, and to initialize and run our project. Choosing all the
+    default options in the Node.Js' install wizard should be fine.
+
+    <Highlight
+        language={powershell}
+        code={`# Test if the installation is successful, if the following prints a version number in terminal
+node -v
+`}
+    ></Highlight>
+</section>
+
+<section>
+    <h2>
+        <img src="/svelte.svg" alt="ndoe logo" />
+        Svelte Extension
+    </h2>
+
+    <a
+        href="https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode"
+        >Install the Svelte for Vscode extension</a
+    >
+
+    This extension probides features syntax highlighting, formatting, auto
+    complete, <a href="https://docs.emmet.io/cheat-sheet/">Emmet</a> etc, so you
+    probably want this.
+</section>
+
+<section>
+    <h2>
+        <img src="/vercel.png" alt="ndoe logo" />
+        Vercel
+    </h2>
+
+    <a href="https://vercel.com/login">Try loggin to Vercel with your Github</a>
+
+    <p>
+        We will be using Vercel to deploy with finished todo. Vercel has a
+        generous free tier, gives you a clean public url, and is *very* easy to
+        deploy to.
+    </p>
 </section>
 
 <style>

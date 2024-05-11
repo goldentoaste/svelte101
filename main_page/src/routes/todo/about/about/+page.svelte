@@ -31,3 +31,6 @@
     <li>Deploy the web app to Vercel (It's shockly easy)</li>
     <li>Stetch goal: connect the todo app to an api</li>
 </ul>
+
+<p>Since Svelte is a relatively new framework, the workshop makes comparisons to other frameworks (such as React), but new web devs can also try to follow along.</p>
+

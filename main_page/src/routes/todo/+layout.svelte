@@ -3,6 +3,11 @@
     import TreeLayout, {
         type Chapter,
     } from "$lib/components/TreeLayout.svelte";
+    import { onMount } from "svelte";
+    import Cookies from "js-cookie";
+
+    import gruvbox_dark from "svelte-highlight/styles/gruvbox-dark-medium";
+    import gruvbox_light from "svelte-highlight/styles/gruvbox-light-medium";
 
     let chapters: Chapter[] = [
         {
@@ -14,13 +19,35 @@
                     title: "About this workshop",
                 },
                 {
-                    href:"setup",
-                    title:"Setups"
+                    href: "setup",
+                    title: "Setups",
+                },
+                {
+                    href:"about_me",
+                    title:"About me"
                 }
             ],
         },
+
+        {
+            title: "What is Svelte?",
+            route:"whatIsSvelte",
+            items: [
+                {
+                    title:"So what is svelte?",
+                    href:"whatIsSvelte"
+                }
+            ]
+        }
     ];
+
+    let darkModeEnabled = Cookies.get("theme") !== "light";
+
 </script>
+
+<svelte:head>
+    {@html darkModeEnabled ? gruvbox_dark : gruvbox_light}
+</svelte:head>
 
 <div id="page">
     <div id="left">
@@ -42,7 +69,7 @@
 <style>
     #page {
         padding: 1rem;
-        padding-top: 0cap;
+        padding-top: 0;
         box-sizing: border-box;
         display: flex;
         flex-direction: row;
@@ -73,9 +100,9 @@
         border-left: var(--bg5) solid 2px;
         border-right: var(--bg5) solid 2px;
 
-        min-height: calc(100dvh - var(--topPad) - 7rem);
+        min-height: calc(100dvh - var(--topPad) - 8rem);
 
-        padding-bottom: 4rem;
+        padding-bottom: 5rem;
 
         position: relative;
     }
@@ -94,7 +121,6 @@
         left: 0;
         width: 100%;
 
-        box-sizing: border-box
-        ;
+        box-sizing: border-box;
     }
 </style>

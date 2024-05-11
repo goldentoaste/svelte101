@@ -123,3 +123,8 @@ a:visited {
     color: var(--yellow);
 
 }
+
+
+pre {
+    border: 2px solid var(--bg5)
+}

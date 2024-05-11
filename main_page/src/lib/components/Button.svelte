@@ -129,7 +129,6 @@
     }
 
     .buttonParent:hover {
-        
         filter: brightness(1.2);
         box-shadow: 0px 0px 20px var(--glow);
     }
@@ -152,32 +151,32 @@
         --offsetX: -0.2rem;
         --offsetY: -0.2rem;
 
-        left: 0;
-        top: 0;
+        left: 1px;
+        top: 1px;
     }
 
     #upright {
         --offsetX: 0.2rem;
         --offsetY: -0.2rem;
 
-        top: 0;
-        right: 0;
+        top: 1px;
+        right: 1px;
     }
 
     #downleft {
         --offsetX: -0.2rem;
         --offsetY: 0.2rem;
 
-        bottom: 0;
-        left: 0;
+        bottom: 1px;
+        left: 1px;
     }
 
     #downright {
         --offsetX: 0.2rem;
         --offsetY: 0.2rem;
 
-        bottom: 0;
-        right: 0;
+        bottom: 1px;
+        right: 1px;
     }
 
     .icon {
