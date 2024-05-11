@@ -1,21 +1,22 @@
 <script lang="ts">
+    import Button from "$lib/components/Button.svelte";
     import TreeLayout, {
         type Chapter,
     } from "$lib/components/TreeLayout.svelte";
 
     let chapters: Chapter[] = [
         {
-            route: "testchap",
-            title: "Test Chap",
+            route: "about",
+            title: "About",
             items: [
                 {
-                    href: "testPage",
-                    title: "TEst 1",
+                    href: "about",
+                    title: "About this workshop",
                 },
                 {
-                    href: "testpage2",
-                    title: "TEst 2",
-                },
+                    href:"setup",
+                    title:"Setups"
+                }
             ],
         },
     ];
@@ -26,7 +27,14 @@
         <TreeLayout rootRoute="todo" {chapters}></TreeLayout>
     </div>
 
-    <div id="center"><slot /></div>
+    <div id="center">
+        <slot />
+
+        <div class="bottomNav">
+            <Button>Previous</Button>
+            <Button>Next</Button>
+        </div>
+    </div>
 
     <div id="right"></div>
 </div>
@@ -34,6 +42,7 @@
 <style>
     #page {
         padding: 1rem;
+        padding-top: 0cap;
         box-sizing: border-box;
         display: flex;
         flex-direction: row;
@@ -56,7 +65,7 @@
     #center {
         flex: 8;
         min-width: 800px;
-        padding: 1rem;
+        padding: 2rem;
         margin: 0 1rem;
 
         min-height: 100%;
@@ -64,6 +73,28 @@
         border-left: var(--bg5) solid 2px;
         border-right: var(--bg5) solid 2px;
 
-        min-height: calc(100dvh - var(--topPad) - 4rem);
+        min-height: calc(100dvh - var(--topPad) - 7rem);
+
+        padding-bottom: 4rem;
+
+        position: relative;
+    }
+
+    .bottomNav {
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+        justify-content: end;
+
+        border-top: 2px solid var(--bg5);
+        padding: 0.75rem;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+
+        box-sizing: border-box
+        ;
     }
 </style>
