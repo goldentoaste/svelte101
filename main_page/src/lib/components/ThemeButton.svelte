@@ -49,19 +49,18 @@
                     duration: 400,
                     x: 50,
                 }}
-                class={darkModeEnabled?"darkIcon":"lightIcon"}
-                src={darkModeEnabled?"./moon.svg":"./sun.svg"}
+                class={darkModeEnabled ? "darkIcon" : "lightIcon"}
+                src={darkModeEnabled ? "/moon.svg" : "/sun.svg"}
                 alt="toggle dark mode"
             />
         {/key}
-
     </button>
 {/if}
 
 <style>
     button {
         position: relative;
-    
+
         transition: border 0.2s ease-out;
 
         width: 2rem;
@@ -71,9 +70,8 @@
 
         border: none;
         background: none;
-        
+
         border: 2px solid var(--bg4);
-        
     }
 
     button:hover {
@@ -81,11 +79,11 @@
     }
 
     img {
-        color: var(--fg0);  
+        color: var(--fg0);
         position: absolute;
 
-        top:50%;
-        left:50%;
+        top: 50%;
+        left: 50%;
 
         transform: translate(-50%, -50%);
 

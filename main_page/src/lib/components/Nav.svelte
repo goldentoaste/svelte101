@@ -14,18 +14,18 @@
 </script>
 
 <nav id="navParent">
-    <div style="display: flex; flex-direction:row; align-items:center; gap:0.5rem;">
-        <img src="./svelte.svg" alt="svelte logo">
-        <h1>
-            Svelte Intro!
-        </h1>
+    <div
+        style="display: flex; flex-direction:row; align-items:center; gap:0.5rem;"
+    >
+        <img src="/svelte.svg" alt="svelte logo" />
+        <h1>Svelte Intro!</h1>
     </div>
-    <ButtonGroup buttonParams={items}/>
+    <ButtonGroup buttonParams={items} />
     <ThemeButton style="margin-left:auto;" />
 </nav>
 
 <style>
-    img{
+    img {
         width: 2.5rem;
         height: 2.5rem;
     }
@@ -39,6 +39,7 @@
         left: 0;
 
         width: 100dvw;
+        min-width: 800px;
         height: var(--navBarHeight);
 
         display: flex;

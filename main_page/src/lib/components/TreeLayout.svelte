@@ -54,7 +54,12 @@
         const route = event.to?.route!.id;
 
         if (route !== undefined && route !== null) {
-            [selectedChap, selectedItem] = hrefToIndex[route];
+            const fetched = hrefToIndex[route];
+            if (fetched !== undefined) {
+                [selectedChap, selectedItem] = fetched;
+            } else {
+                [selectedChap, selectedItem] = [-1, -1];
+            }
             // TODO handle not found
         }
     });
