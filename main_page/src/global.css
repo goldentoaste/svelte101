@@ -9,9 +9,15 @@
     --fg0: #d4be98;
     --fg1: #ddc7a1;
 
+    --red: #ea6962;
     --orange: #e78a4e;
     --yellow: #d8a657;
-    --red: #ea6962;
+    --green: #a9b665;
+    --aqua: #89b482;
+    --blue: #7daea3;
+    --purple: #d3869b;
+    --grey: #7c6f64;
+
 
 }
 
@@ -29,6 +35,11 @@
     --orange: #c35e0a;
     --yellow: #b47109;
     --red: #c14a4a;
+    --green: #6c782e;
+    --aqua: #4c7a5d;
+    --blue: #45707a;
+    --purple: #945e80;
+    --grey: #a89984;
 }
 
 body {
@@ -39,7 +50,7 @@ body {
     background-color: var(--bg0);
     padding-top: calc(var(--topPad));
 
-    transition-property: background-color;
+    transition-property: background-color, color;
     transition-duration: 400ms;
     transition-timing-function: ease-out;
 
@@ -95,14 +106,19 @@ h1.title {
 
     border-bottom: 2px solid var(--bg5);
 }
+.verDiv {
+    height: auto;
+
+    border-right: 2px solid var(--bg5);
+}
 
 p {
     font-size: larger;
 }
 
-span {
+/* span {
     font-size: larger;
-}
+} */
 
 ul {
     margin: 0.5rem;
@@ -114,7 +130,7 @@ li {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: underline;
     color: var(--fg1);
 
 }

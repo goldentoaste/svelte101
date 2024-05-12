@@ -3,7 +3,7 @@
     import TreeLayout, {
         type Chapter,
     } from "$lib/components/TreeLayout.svelte";
-    import { onMount } from "svelte";
+
     import Cookies from "js-cookie";
 
     import gruvbox_dark from "svelte-highlight/styles/gruvbox-dark-medium";
@@ -31,11 +31,30 @@
 
         {
             title: "What is Svelte?",
-            route:"whatIsSvelte",
+            route:"what_is_svelte",
             items: [
                 {
                     title:"So what is svelte?",
-                    href:"whatIsSvelte"
+                    href:"what_is_svelte"
+                },
+                {
+                    title: "Pros and Cons",
+                    href:"pros_cons"
+                },
+                {
+                    title:"Svelte file structure",
+                    href:"svelte_structure"
+                }
+            ]
+        },
+
+        {
+            title:"Svelte Basics",
+            route:'svelte_basics',
+            items:[
+                {
+                    title:"Variables and attributes",
+                    href:"variables"
                 }
             ]
         }
@@ -45,9 +64,9 @@
 
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
     {@html darkModeEnabled ? gruvbox_dark : gruvbox_light}
-</svelte:head>
+</svelte:head> -->
 
 <div id="page">
     <div id="left">

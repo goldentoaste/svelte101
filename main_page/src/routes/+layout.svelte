@@ -2,7 +2,7 @@
     import Nav, { type NavItem } from "$lib/components/Nav.svelte";
     import { fade } from "svelte/transition";
     import "../global.css";
-
+    import "../gruvbox_prism.css";
     let navTargets: NavItem[] = [
         {
             href: "/",

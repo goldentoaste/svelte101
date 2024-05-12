@@ -1,0 +1,59 @@
+.token.tag {
+    color: var(--orange)
+}
+
+.token.keyword {
+    color: var(--red);
+}
+
+.token.punctuation {
+    color: var(--yellow);
+}
+
+.token.boolean {
+    color: var(--purple);
+}
+
+.token.function {
+    color: var(--green)
+}
+
+.token.string {
+    color: var(--yellow);
+}
+
+.token.namespace {
+    color: var(--red);
+    opacity: 1;
+}
+
+.token.attr-name:has(.namespace){
+    color:var(--blue);
+}
+
+.token.comment {
+    color:var(--grey)
+}
+
+.token.selector{
+    color: var(--red);
+}
+
+.token.property {
+    color: var(--aqua);
+}
+
+.token.language-css {
+    color: var(--green);
+}
+
+pre {
+    overflow: auto;
+    padding:1.25rem;
+    background-color: var(--bg1);
+    line-height: 1.3rem;
+   
+}
+code {
+    font-family: "Consolas", sans-serif;
+}
