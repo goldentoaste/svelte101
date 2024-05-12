@@ -61,6 +61,22 @@
                     href: "reactivity",
                 },
                 {
+                    title: "Conditional Rendering",
+                    href: "conditional_rendering"
+                },
+                {
+                    title: "Transitions",
+                    href:"transitions"
+                },
+                {
+                    title:"List Iteration",
+                    href: "list"
+                },
+                {
+                    title:"Variable Bind / More List",
+                    href:"bindings"
+                },
+                {
                     title:"More on Events",
                     href:"more_events"
                 }
