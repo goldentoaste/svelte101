@@ -125,6 +125,8 @@
         height: fit-content;
 
         max-height: 70vh;
+
+        padding-bottom: 1rem;
     }
 
     .title {

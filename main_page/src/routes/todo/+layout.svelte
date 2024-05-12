@@ -23,45 +23,52 @@
                     title: "Setups",
                 },
                 {
-                    href:"about_me",
-                    title:"About me"
-                }
+                    href: "about_me",
+                    title: "About me",
+                },
             ],
         },
 
         {
             title: "What is Svelte?",
-            route:"what_is_svelte",
+            route: "what_is_svelte",
             items: [
                 {
-                    title:"So what is svelte?",
-                    href:"what_is_svelte"
+                    title: "So what is svelte?",
+                    href: "what_is_svelte",
                 },
                 {
                     title: "Pros and Cons",
-                    href:"pros_cons"
+                    href: "pros_cons",
                 },
                 {
-                    title:"Svelte file structure",
-                    href:"svelte_structure"
-                }
-            ]
+                    title: "Svelte file structure",
+                    href: "svelte_structure",
+                },
+            ],
         },
 
         {
-            title:"Svelte Basics",
-            route:'svelte_basics',
-            items:[
+            title: "Svelte Basics",
+            route: "svelte_basics",
+            items: [
                 {
-                    title:"Variables and attributes",
-                    href:"variables"
+                    title: "Variables and attributes",
+                    href: "variables",
+                },
+                {
+                    title: "Reactivity and Events",
+                    href: "reactivity",
+                },
+                {
+                    title:"More on Events",
+                    href:"more_events"
                 }
-            ]
-        }
+            ],
+        },
     ];
 
     let darkModeEnabled = Cookies.get("theme") !== "light";
-
 </script>
 
 <!-- <svelte:head>
