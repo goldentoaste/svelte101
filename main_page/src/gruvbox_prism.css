@@ -27,6 +27,13 @@
     opacity: 1;
 }
 
+.token.attr-value{
+    color: var(--aqua)
+}
+
+.token.attr-name {
+    color:var(--yellow);
+}
 .token.attr-name:has(.namespace){
     color:var(--blue);
 }
@@ -45,6 +52,10 @@
 
 .token.language-css {
     color: var(--green);
+}
+
+.token.language-javascript {
+    color: var(--fg1);
 }
 
 pre {

@@ -16,7 +16,7 @@
     --aqua: #89b482;
     --blue: #7daea3;
     --purple: #d3869b;
-    --grey: #7c6f64;
+    --grey: #a89984;
 
 
 }
@@ -39,7 +39,7 @@
     --aqua: #4c7a5d;
     --blue: #45707a;
     --purple: #945e80;
-    --grey: #a89984;
+    --grey: #7c6f64;
 }
 
 body {
@@ -106,6 +106,7 @@ h1.title {
 
     border-bottom: 2px solid var(--bg5);
 }
+
 .verDiv {
     height: auto;
 
