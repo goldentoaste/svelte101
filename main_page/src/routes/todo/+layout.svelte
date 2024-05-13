@@ -6,8 +6,11 @@
 
     import Cookies from "js-cookie";
 
-    import gruvbox_dark from "svelte-highlight/styles/gruvbox-dark-medium";
-    import gruvbox_light from "svelte-highlight/styles/gruvbox-light-medium";
+    //@ts-ignore
+    import { globalConfig } from 'svelte-prism'
+    //@ts-ignore
+    globalConfig.transform = x => x.replace(/\*\{\}/g, "");
+    ;
 
     let chapters: Chapter[] = [
         {
@@ -28,7 +31,6 @@
                 },
             ],
         },
-
         {
             title: "What is Svelte?",
             route: "what_is_svelte",
@@ -47,7 +49,6 @@
                 },
             ],
         },
-
         {
             title: "Svelte Basics",
             route: "svelte_basics",
@@ -77,10 +78,28 @@
                     href:"bindings"
                 },
                 {
-                    title:"More on Events",
-                    href:"more_events"
+                    title:"Css Classes",
+                    href:"css_classes"
+                },
+                {
+                    title:"Component",
+                    href:"component"
                 }
             ],
+        },
+        {
+            title: "What is SvelteKit?",
+            route: "what_is_sveltekit",
+            items:[
+                {
+                    title:"Intro",
+                    href:"intro"
+                },
+                {
+                    title: "Project Structure",
+                    href:"project_structure"
+                }
+            ]
         },
     ];
 

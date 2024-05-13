@@ -57,7 +57,9 @@
 .token.language-javascript {
     color: var(--fg1);
 }
-
+.token.operator {
+    color: var(--red);
+}
 pre {
     overflow: auto;
     padding:1.25rem;

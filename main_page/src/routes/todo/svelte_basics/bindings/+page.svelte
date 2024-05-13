@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Prism from 'svelte-prism';
+    import Prism from "svelte-prism";
 
     import Frame from "$lib/components/Frame.svelte";
 
@@ -26,37 +26,42 @@
 <p>The below example shows bind: and #each working together.</p>
 
 <Prism language="svelte">
-    {
-`<script>
+    {`<script>
     let text = "";
-
     let items = [];    
 <\/script>
 
-<div class="hor">
+<form on:submit={() => {
+        items = [...items, text];
+        text = "";
+    }}>
     <input type="text" bind:value={text} placeholder="type here!" />
-    <button on:click={() => {items = [...items, text];}}>Add</button>
-</div>
+    <input type="submit" value="Add"/> 
+</form>
+
 
 <div class="ver">
     {#each items as item, index}
         <span> {index + 1}. {item}</span>
     {/each}
 </div>
-`
-    }
+`}
 </Prism>
 
 <Frame>
-    <div class="hor">
+  
+    <form on:submit={() => {
+            items = [...items, text];
+            text = "";
+        }}>
         <input type="text" bind:value={text} placeholder="type here!" />
-        <button on:click={() => {items = [...items, text];}}>Add</button>
-    </div>
+        <input type="submit" value="Add"/> 
+    </form>
+    
 
     <div class="ver">
         {#each items as item, index}
             <span> {index + 1}. {item}</span>
         {/each}
     </div>
-    
 </Frame>
