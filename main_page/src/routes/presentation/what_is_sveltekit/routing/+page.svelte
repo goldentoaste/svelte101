@@ -43,6 +43,11 @@
     inherited by all sub directories.
     <br />
     For example on this presentation site, the top nav bar is defined in root directory's
-    +layout. <br /> ./presention/+layout.svelte contains the table of content on
-    the left, the Prev and Next buttons, and layouts for the center contents.
+    +layout.
+    <br />
+    ./presention/+layout.svelte contains the table of content on the left, the Prev
+    and Next buttons, and layouts for the center contents.
+    <br />
+    If there are any code that applies to all of the sub pages, such as user login,
+    +layout is a good place to do it.
 </p>
