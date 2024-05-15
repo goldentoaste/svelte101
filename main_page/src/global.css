@@ -52,8 +52,8 @@ body {
     transition-duration: 400ms;
     transition-timing-function: ease-out;
 
-    font-family: "Raleway", sans-serif;
-    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
 
     color: var(--fg1);
 
@@ -66,9 +66,15 @@ body {
     margin: 0;
 }
 
+br {
+    display: block;
+    margin: 5px 0;
+}
+
 h1 {
     font-weight: 500;
     margin: 1rem;
+    margin-left: 0;
 }
 
 h2 {
@@ -143,4 +149,8 @@ a:visited {
 
 pre {
     border: 2px solid var(--bg5)
+}
+
+span.inline {
+    color: var(--orange);
 }

@@ -9,8 +9,8 @@
             text: "Home",
         },
         {
-            href: "/todo",
-            text: "Todo App",
+            href: "/presentation",
+            text: "Presentation",
         },
         {
             href: "/",

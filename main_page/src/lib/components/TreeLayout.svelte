@@ -117,6 +117,9 @@
 
 <style>
     .treeContainer {
+        position: sticky;
+        top: var(--topPad);
+
         background-color: var(--bg2);
         overflow: auto;
         border: var(--bg5) solid 2px;
