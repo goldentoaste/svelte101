@@ -50,4 +50,9 @@
     <br />
     If there are any code that applies to all of the sub pages, such as user login,
     +layout is a good place to do it.
+
+    <br />
+    It's also important to note that +layout should always have a
+    <span class="inline">{"<slot/>"}</span> to indicate where the sub pages should
+    go, otherwise nothing will be rendered!
 </p>
