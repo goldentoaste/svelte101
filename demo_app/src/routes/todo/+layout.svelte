@@ -1,0 +1,20 @@
+<div class="todoRoot">
+    <slot />
+</div>
+
+<style>
+    .todoRoot {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: fit-content;
+
+        padding: 2rem 5rem;
+
+
+        /* border-box accounts padding in it's size calculation, so that width:100% works with padding. */
+        box-sizing: border-box;
+    }
+</style>
