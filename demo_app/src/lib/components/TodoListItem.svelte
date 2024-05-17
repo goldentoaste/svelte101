@@ -1,7 +1,8 @@
 <script lang="ts">
     import { createEventDispatcher } from "svelte";
-    import { v4 as getUUID } from "uuid";
-    export let id: string = getUUID(); // id is required so we know which to delete later
+    import { fly } from "svelte/transition";
+
+    export let id: string = ""; // id is required so we know which to delete later
     export let done: boolean = false;
     export let message: string;
 
@@ -17,22 +18,25 @@
 <div
     class="todoItem"
     class:done
-    on:click={() => {
-        dispatch("toggleDone", {
-            id,
-            oldVal: done,
-        });
+    transition:fly={{
+        x: 100,
     }}
 >
     <!-- We want to display check or cross mark depending on 'done'. Ternery will do. -->
-    <span>{done ? "✔️" : "❌"} {message}</span>
-
-    <button
-        class="deleteButton"
+    <span
         on:click={() => {
             dispatch("toggleDone", {
                 id,
                 oldVal: done,
+            });
+        }}>{done ? "✔️" : "❌"} {message}</span
+    >
+
+    <button
+        class="deleteButton"
+        on:click={() => {
+            dispatch("delete", {
+                id,
             });
         }}>Delete</button
     >
@@ -52,12 +56,12 @@
     }
 
     .done {
-        background-color: var(--red);
+        background-color: var(--green);
     }
 
     .todoItem:not(.done) {
         /* find .todoItem that isn't .done */
-        background-color: var(--green);
+        background-color: var(--red);
     }
 
     .deleteButton {
@@ -73,12 +77,13 @@
         transition: all 0.3s ease-out;
     }
 
-    button:hover{
+    button:hover {
         filter: brightness(1.1);
         background-color: var(--bg0);
     }
 
     span {
         cursor: pointer;
+        user-select: none;
     }
 </style>
