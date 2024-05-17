@@ -84,6 +84,10 @@
                 {
                     title:"Component",
                     href:"component"
+                },
+                {
+                    title: "Custom Events",
+                    href:"custom_events"
                 }
             ],
         },

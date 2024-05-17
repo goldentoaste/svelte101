@@ -8,6 +8,9 @@ body {
     --fg0 : #ddccab;
     --focus: #654735;
 
+    --green: #BFD39D;
+    --red: #FFA59A;
+
     padding: 8rem;
     
     font-family: "Inter", sans-serif;
