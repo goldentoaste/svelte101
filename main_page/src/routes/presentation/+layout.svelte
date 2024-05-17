@@ -109,6 +109,16 @@
                 }
             ]
         },
+        {
+            title:"Todo App",
+            route:"build_todo",
+            items:[
+                {
+                    title:"Lets build the todo app!",
+                    href:"todo"
+                }
+            ]
+        }
     ];
 
 </script>
