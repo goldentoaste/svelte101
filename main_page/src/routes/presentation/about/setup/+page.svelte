@@ -4,8 +4,8 @@
 
 <h1 class="title">Setting Up the Environment</h1>
 <p>
-    This sections includes everything you need to get start with Svelte. For
-    experienced web devs, you probably have most things already.
+    This sections includes everything you need to get start with Svelte. For experienced web devs,
+    you probably have most things already.
 </p>
 
 <span>We will be using the following:</span>
@@ -23,11 +23,11 @@
     </li>
 
     <li>
-        <a target="_blank"
+        <a
+            target="_blank"
             href="https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode"
         >
-            <img src="/svelte.svg" alt="svelte logo" />Svelte extension for
-            Vscode</a
+            <img src="/svelte.svg" alt="svelte logo" />Svelte extension for Vscode</a
         >
     </li>
 
@@ -41,7 +41,9 @@
         > solution you prefer
     </li>
     <li>
-        ! Clone the <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template">Template Code</a> here using git.
+        ! Clone the <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template"
+            >Template Code</a
+        > here using git.
     </li>
 
     <li>
@@ -50,21 +52,25 @@
     </li>
 </ul>
 
-<div class="horDiv"></div>
+<div class="horDiv" />
 
 <section>
     <h2 class="title">Template Code for Todo app</h2>
     <p>
-        <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template"> Clone the repo here</a><br />
+        <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template">
+            Clone the repo here</a
+        ><br />
         <br />
-        This template repo contains skeleton code for the todo app we will be making.
-        It also has some css already to the app look nicer.
+        This template repo contains skeleton code for the todo app we will be making. It also has some
+        css already to the app look nicer.
 
         <br /> <br />
-        On the Github page there should be a green button, which looks like this
-        when clicked. Click "Open with Github Desktop" if you are using it.
+        On the Github page there should be a green button that says "Use this template", which you can
+        use to create a new repo using the template code.
     </p>
-    <img src="/setups/git_clone.png" alt="" style="width: 400px;" />
+    <img src="/git_template.png" alt="" style="width: 400px;" />
+    <img src="/git_template2.png" alt="" style="width: 400px;" />
+
     <p>
         You can also initialize a new Svelte from scratch if you want to:
         <Prism language="plain">
@@ -81,14 +87,13 @@
     <a target="_blank" href="https://code.visualstudio.com/"> Download Vscode Here</a>
 
     <p>
-        Vscode is a popular code editor that supports most languages and
-        frameworks through extensions, in particular Svelte has first-party for
-        support for a vscode extension, and so will be used for this workshop.
-        Installing vscode should be fairly straight forward.
+        Vscode is a popular code editor that supports most languages and frameworks through
+        extensions, in particular Svelte has first-party for support for a vscode extension, and so
+        will be used for this workshop. Installing vscode should be fairly straight forward.
 
         <br /><br />
-        Some alternative IDEs are JetBrain's WebStorm, or NeoVim are viable as well,
-        with third-party extensions.
+        Some alternative IDEs are JetBrain's WebStorm, or NeoVim are viable as well, with third-party
+        extensions.
     </p>
 </section>
 
@@ -100,13 +105,12 @@
 
     <a target="_blank" href="https://nodejs.org/en/download/current">Download Node Here</a>
 
-    NodeJs is a "javascript runtime environment". We will just use it as a
-    package manager, and to initialize and run our project. Choosing all the
-    default options in the Node.Js' install wizard should be fine.
+    NodeJs is a "javascript runtime environment". We will just use it as a package manager, and to
+    initialize and run our project. Choosing all the default options in the Node.Js' install wizard
+    should be fine.
 
     <Prism language={"plain"}>
-        {
-`# Test if the installation is successful, if the following prints a version number in terminal
+        {`# Test if the installation is successful, if the following prints a version number in terminal
 node -v
 > v20.11.0`}
     </Prism>
@@ -118,14 +122,15 @@ node -v
         Svelte Extension
     </h2>
 
-    <a target="_blank"
+    <a
+        target="_blank"
         href="https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode"
         >Install the Svelte for Vscode extension</a
     >
 
-    This extension probides features syntax highlighting, formatting, auto
-    complete, <a target="_blank" href="https://docs.emmet.io/cheat-sheet/">Emmet</a> etc, so you
-    probably want this.
+    This extension probides features syntax highlighting, formatting, auto complete,
+    <a target="_blank" href="https://docs.emmet.io/cheat-sheet/">Emmet</a> etc, so you probably want
+    this.
 </section>
 
 <section>
@@ -137,9 +142,8 @@ node -v
     <a target="_blank" href="https://vercel.com/login">Try loggin to Vercel with your Github</a>
 
     <p>
-        We will be using Vercel to deploy with finished todo. Vercel has a
-        generous free tier, gives you a clean public url, and is *very* easy to
-        deploy to.
+        We will be using Vercel to deploy with finished todo. Vercel has a generous free tier, gives
+        you a clean public url, and is *very* easy to deploy to.
     </p>
 </section>
 

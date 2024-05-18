@@ -5,7 +5,7 @@
 
     export let buttonParams: ButtonParam[] = [];
 
-    let selectedIndex = 0;
+    export let selectedIndex = 0;
     let buttonContainer: HTMLElement | null;
     let horiOffset = 0;
     let boxWidth = 0;

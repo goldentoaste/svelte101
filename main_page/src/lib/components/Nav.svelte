@@ -11,9 +11,11 @@
     import Toggle from "./Toggle.svelte";
 
     import { presentMode } from "$lib/globals";
+    import { afterNavigate } from "$app/navigation";
 
     export let items: NavItem[];
 
+    let selectedIndex = 0;
     let showNav = true;
 
     function handleHover(e: MouseEvent) {
@@ -21,7 +23,7 @@
             return;
         }
 
-        if (e.clientY < 100) {
+        if (e.clientY < 50) {
             showNav = true;
             document.body.style.setProperty("padding-top", "var(--topPad)")
 
@@ -33,6 +35,16 @@
 
         }
     }
+
+    afterNavigate((nav)=>{
+        items.forEach((val, index) => {
+            console.log( nav.to?.route.id!,  val.href);
+            
+            if ( nav.to?.route.id?.indexOf(val.href)! >= 0){
+                selectedIndex = index;
+            }
+        });
+    })
 </script>
 
 <svelte:body on:mousemove={handleHover} />
@@ -42,7 +54,7 @@
         <img src="/svelte.svg" alt="svelte logo" />
         <h1>Svelte Intro!</h1>
     </div>
-    <ButtonGroup buttonParams={items} />
+    <ButtonGroup {selectedIndex} buttonParams={items} />
 
     <div style="margin-left:auto; display:flex; gap: 1rem">
         <Toggle bind:toggleOn={$presentMode}>Present Mode</Toggle>

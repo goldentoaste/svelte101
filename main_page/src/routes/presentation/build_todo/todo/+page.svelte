@@ -18,5 +18,7 @@
 <p>Click on the "Use this template" button to start your own repo with the tempalte code! Then use github desktop or your preferred method to download and then open in vscode.</p>
 
 <style>
-    /* CSS */
+    img{
+        max-width: 100%;
+    }
 </style>
