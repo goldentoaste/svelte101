@@ -1,7 +1,9 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import Button from "$lib/components/Button.svelte";
-    import TreeLayout, { type Chapter } from "$lib/components/TreeLayout.svelte";
+    import TreeLayout, {
+        type Chapter,
+    } from "$lib/components/TreeLayout.svelte";
 
     import { prevUrl, nextUrl } from "$lib/components/TreeLayout.svelte";
     import { presentMode } from "$lib/globals";
@@ -159,7 +161,7 @@
         <TreeLayout rootRoute="presentation" {chapters} />
     </div>
 
-    <div id="center">
+    <div id="center" class:presentMode={$presentMode}>
         <slot />
 
         <div class="bottomNav">
@@ -219,9 +221,8 @@
         transform: translate(-110%, 0);
     }
 
-    #left.show.presentMode{
+    #left.show.presentMode {
         transform: translate(10%, 0);
-
     }
 
     #right.presentMode {
@@ -235,16 +236,18 @@
         padding: 2rem;
         margin: 0 1rem;
 
-        min-height: 100%;
-
         border-left: var(--bg5) solid 2px;
         border-right: var(--bg5) solid 2px;
 
         min-height: calc(100dvh - var(--topPad) - 8rem);
 
         padding-bottom: 5rem;
-
+        transition: min-height 0.3s ease-out;
         position: relative;
+    }
+
+    #center.presentMode {
+        min-height: calc(100dvh - 8rem);
     }
 
     .bottomNav {

@@ -14,7 +14,7 @@
 <h1 class="title">Lists Iteration</h1>
 
 <p>
-    In order to display a list of data, <span class="inline">{"{#each list as item, inedx (item.id)}"}</span>
+    In order to display a list of data, <span class="inline">{"{#each list as item, index (item.id)}"}</span>
     (each block) is used. In JSX usually 'list.map' would be used here, where as
     Svelte's syntax is more like a common for loop.
 </p>
