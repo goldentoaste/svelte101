@@ -43,18 +43,13 @@
     {`// Example svelte project structure
 my_project/
 ├── src/
-│   ├── static/
-│   │   ├── svelte_logo.svg
-│   │   ├── favicon.png
-│   │   └── other_data.stuff
-│   ├── src/
-│   │   └── routes/
-│   │       ├── +page.svelte
-│   │       ├── +layout.svelte
-│   │       ├── info/
-│   │       │   └── +page.svelte
-│   │       └── about/
-│   │           └── +page.svelte
+│   ├── routes/
+│   │   ├── +page.svelte
+│   │   ├── +layout.svelte
+│   │   ├── info/
+│   │   │   └── +page.svelte
+│   │   └── about/
+│   │       └── +page.svelte
 │   └── lib/
 │       ├── global_states.ts
 │       ├── components/
@@ -63,6 +58,10 @@ my_project/
 │       └── scripts/
 │           ├── joke_writter.ts
 │           └── db_connections.ts
+├── static/
+│   ├── svelte_logo.svg
+│   ├── favicon.png
+│   └── other_data.stuff
 ├── .gitignore
 ├── package.json
 └── tsconfig.json
