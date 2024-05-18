@@ -142,7 +142,7 @@
             showLeft = true;
         }
 
-        if (e.clientX > 200) {
+        if (e.clientX > 300) {
             showLeft = false;
         }
     }
@@ -247,7 +247,7 @@
     }
 
     #center.presentMode {
-        min-height: calc(100dvh - 8rem);
+        min-height: calc(100dvh - 11rem);
     }
 
     .bottomNav {
