@@ -68,8 +68,8 @@
         On the Github page there should be a green button that says "Use this template", which you can
         use to create a new repo using the template code.
     </p>
-    <img src="/git_template.png" alt="" style="width: 400px;" />
-    <img src="/git_template2.png" alt="" style="width: 400px;" />
+    <img src="/git_template.png" alt=""  style="width: 100%;" />
+    <img src="/git_template2.png" alt="" style="width: 400px;"  />
 
     <p>
         You can also initialize a new Svelte from scratch if you want to:
