@@ -6,22 +6,49 @@
 </script>
 
 <script lang="ts">
-    import Button from "./Button.svelte";
     import ButtonGroup from "./ButtonGroup.svelte";
     import ThemeButton from "./ThemeButton.svelte";
+    import Toggle from "./Toggle.svelte";
+
+    import { presentMode } from "$lib/globals";
 
     export let items: NavItem[];
+
+    let showNav = true;
+
+    function handleHover(e: MouseEvent) {
+        if (!$presentMode) {
+            return;
+        }
+
+        if (e.clientY < 100) {
+            showNav = true;
+            document.body.style.setProperty("padding-top", "var(--topPad)")
+
+        }
+
+        if (e.clientY > 120) {
+            showNav = false;
+            document.body.style.setProperty("padding-top", "2rem")
+
+        }
+    }
 </script>
 
-<nav id="navParent">
+<svelte:body on:mousemove={handleHover} />
+
+<nav id="navParent" class:showNav>
     <div style="display: flex; flex-direction:row; align-items:center; gap:0.5rem;">
-        <img src="/svelte.svg" alt="svelte logo">
-        <h1>
-            Svelte Intro!
-        </h1>
+        <img src="/svelte.svg" alt="svelte logo" />
+        <h1>Svelte Intro!</h1>
     </div>
     <ButtonGroup buttonParams={items} />
-    <ThemeButton style="margin-left:auto;" />
+
+    <div style="margin-left:auto; display:flex; gap: 1rem">
+        <Toggle bind:toggleOn={$presentMode}>Present Mode</Toggle>
+
+        <ThemeButton />
+    </div>
 </nav>
 
 <style>
@@ -57,5 +84,11 @@
         overflow: hidden;
 
         border-bottom: 3px solid var(--fg0);
+
+        transition: top 0.4s ease-out;
+    }
+
+    nav:not(.showNav) {
+        top: calc(0px - var(--navBarHeight));
     }
 </style>

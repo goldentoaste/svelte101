@@ -1,16 +1,15 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
     import Button from "$lib/components/Button.svelte";
-    import TreeLayout, {
-        type Chapter,
-    } from "$lib/components/TreeLayout.svelte";
+    import TreeLayout, { type Chapter } from "$lib/components/TreeLayout.svelte";
 
-    import Cookies from "js-cookie";
+    import { prevUrl, nextUrl } from "$lib/components/TreeLayout.svelte";
+    import { presentMode } from "$lib/globals";
 
     //@ts-ignore
-    import { globalConfig } from 'svelte-prism'
+    import { globalConfig } from "svelte-prism";
     //@ts-ignore
-    globalConfig.transform = x => x.replace(/\*\{\}/g, "");
-    ;
+    globalConfig.transform = (x) => x.replace(/\*\{\}/g, "");
 
     let chapters: Chapter[] = [
         {
@@ -63,92 +62,127 @@
                 },
                 {
                     title: "Conditional Rendering",
-                    href: "conditional_rendering"
+                    href: "conditional_rendering",
                 },
                 {
                     title: "Transitions",
-                    href:"transitions"
+                    href: "transitions",
                 },
                 {
-                    title:"List Iteration",
-                    href: "list"
+                    title: "List Iteration",
+                    href: "list",
                 },
                 {
-                    title:"Variable Bind / More List",
-                    href:"bindings"
+                    title: "Variable Bind / More List",
+                    href: "bindings",
                 },
                 {
-                    title:"Css Classes",
-                    href:"css_classes"
+                    title: "Css Classes",
+                    href: "css_classes",
                 },
                 {
-                    title:"Component",
-                    href:"component"
+                    title: "Component",
+                    href: "component",
                 },
                 {
                     title: "Custom Events",
-                    href:"custom_events"
-                }
+                    href: "custom_events",
+                },
             ],
         },
         {
             title: "What is SvelteKit?",
             route: "what_is_sveltekit",
-            items:[
+            items: [
                 {
-                    title:"Intro",
-                    href:"intro"
+                    title: "Intro",
+                    href: "intro",
                 },
                 {
                     title: "Project Structure",
-                    href:"project_structure"
+                    href: "project_structure",
                 },
                 {
-                    title:"Routing",
-                    href:"routing"
-                }
-            ]
+                    title: "Routing",
+                    href: "routing",
+                },
+            ],
         },
         {
-            title:"Todo App",
-            route:"build_todo",
-            items:[
+            title: "Todo App",
+            route: "build_todo",
+            items: [
                 {
-                    title:"Lets build the todo app!",
-                    href:"todo"
-                }
-            ]
+                    title: "Lets build the todo app!",
+                    href: "todo",
+                },
+            ],
         },
         {
-            title:"Deploy on Vercel",
+            title: "Deploy on Vercel",
             route: "deploy",
-            items:[
+            items: [
                 {
-                    title:"Deploy to Vercel",
-                    href:"vercel"
-                }
-            ]
-        }
+                    title: "Deploy to Vercel",
+                    href: "vercel",
+                },
+            ],
+        },
     ];
 
+    let showLeft = true;
+    function handleHover(e: MouseEvent) {
+        if (!$presentMode) {
+            return;
+        }
+
+        if (e.clientX < 50) {
+            showLeft = true;
+        }
+
+        if (e.clientX > 200) {
+            showLeft = false;
+        }
+    }
+
+    $: if ($presentMode) {
+        showLeft = false;
+    } else {
+        showLeft = true;
+    }
 </script>
 
+<svelte:body on:mousemove={handleHover} />
 
 <div id="page">
-    <div id="left">
-        <TreeLayout rootRoute="presentation" {chapters}></TreeLayout>
+    <div id="left" class:presentMode={$presentMode} class:show={showLeft}>
+        <TreeLayout rootRoute="presentation" {chapters} />
     </div>
 
     <div id="center">
         <slot />
 
         <div class="bottomNav">
-            <Button>Previous</Button>
-            <Button>Next</Button>
+            <Button
+                on:click={() => {
+                    if ($prevUrl !== undefined) {
+                        goto($prevUrl);
+                    }
+                }}>Previous</Button
+            >
+            <Button
+                on:click={() => {
+                    if ($nextUrl !== undefined) {
+                        console.log($nextUrl);
+
+                        goto($nextUrl);
+                    }
+                }}>Next</Button
+            >
         </div>
     </div>
 
-    <div id="right"></div>
+    <div id="right" class:presentMode={$presentMode} />
 </div>
 
 <style>
@@ -165,13 +199,34 @@
     }
 
     #left {
-        flex: 2;
+        z-index: 999;
+        flex: 1;
         display: flex;
         justify-content: center;
+
+        transform: translate(0, 0);
+
+        transition: transform 0.3s ease-out;
     }
 
-    #right {
+    #left.presentMode {
+        position: absolute;
+        left: 0;
+        top: calc(var(--topPad) + 2rem);
+    }
+
+    #left:not(.show) {
+        transform: translate(-110%, 0);
+    }
+
+    #left.show.presentMode{
+        transform: translate(10%, 0);
+
+    }
+
+    #right.presentMode {
         flex: 1;
+        position: absolute;
     }
 
     #center {

@@ -46,9 +46,9 @@ body {
     --glow: #5a524c;
 
     background-color: var(--bg0);
-    padding-top: calc(var(--topPad));
+    padding-top: var(--topPad);
 
-    transition-property: background-color, color;
+    transition-property: background-color, color, padding-top;
     transition-duration: 400ms;
     transition-timing-function: ease-out;
 

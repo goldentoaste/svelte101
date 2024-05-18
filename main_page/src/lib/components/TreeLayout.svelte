@@ -12,11 +12,15 @@
         title: string;
         href: string;
     }
+
+    export let prevUrl = writable<string | undefined>(undefined);
+    export let nextUrl = writable<string | undefined>(undefined);
 </script>
 
 <script lang="ts">
     import { afterNavigate } from "$app/navigation";
     import { fly } from "svelte/transition";
+    import { writable } from "svelte/store";
 
     export let chapters: Chapter[] = [];
     export let rootRoute: string;
@@ -38,9 +42,7 @@
         chapterSizes.length = 0; // clear
 
         for (let i = 0; i < chapters.length; i++) {
-            chapterSizes.push(
-                document.getElementById("itemContainer" + i)?.scrollHeight!,
-            );
+            chapterSizes.push(document.getElementById("itemContainer" + i)?.scrollHeight!);
             const chapter = chapters[i];
             const route = `/${rootRoute}/${chapter.route}/`;
             for (let j = 0; j < chapter.items.length; j++) {
@@ -67,6 +69,35 @@
         } else {
             selectedChap = -1;
             selectedItem = -1;
+            return;
+        }
+
+        let length = -1;
+        if (selectedChap >= 0 && selectedChap < chapters.length) {
+            length = chapters[selectedChap].items.length;
+        } else {
+            return;
+        }
+        if (selectedItem < length - 1) {
+            const chapter = chapters[selectedChap];
+            $nextUrl = `/${rootRoute}/${chapter.route}/${chapter.items[selectedItem + 1].href}`;
+        } else if (selectedChap < chapters.length - 1) {
+            const chapter = chapters[selectedChap + 1];
+            $nextUrl = `/${rootRoute}/${chapter.route}/${chapter.items[0].href}`;
+        } else {
+            $nextUrl = undefined;
+        }
+
+        if (selectedItem > 0) {
+            const chapter = chapters[selectedChap];
+            $prevUrl = `/${rootRoute}/${chapter.route}/${chapter.items[selectedItem - 1].href}`;
+        } else if (selectedChap > 0) {
+            const chapter = chapters[selectedChap - 1];
+            $prevUrl = `/${rootRoute}/${chapter.route}/${
+                chapter.items[chapter.items.length - 1].href
+            }`;
+        } else {
+            $prevUrl = undefined;
         }
     });
 </script>
@@ -88,9 +119,7 @@
             </div>
             <div
                 class="itemWrapper"
-                style="max-height: {chapter.open
-                    ? chapterSizes[chapIndex] + 10
-                    : 0}px"
+                style="max-height: {chapter.open ? chapterSizes[chapIndex] + 10 : 0}px"
             >
                 <div class="itemContainer" id={"itemContainer" + chapIndex}>
                     {#each chapter.items as item, itemIndex (item.href)}
@@ -102,7 +131,7 @@
                                     transition:fly={{
                                         x: -10,
                                     }}
-                                ></div>
+                                />
                             {/if}
                             <a href={route + item.href}
                                 >{chapIndex + 1}.{itemIndex + 1} {item.title}</a
