@@ -11,19 +11,19 @@
 <span>We will be using the following:</span>
 <ul>
     <li>
-        <a href="https://code.visualstudio.com/">
+        <a target="_blank" href="https://code.visualstudio.com/">
             <img src="/vscode.png" alt="vscode logo" />Vscode</a
         >
     </li>
 
     <li>
-        <a href="https://nodejs.org/en/download/current">
+        <a target="_blank" href="https://nodejs.org/en/download/current">
             <img src="/node.svg" alt="node js logo" />Node.Js</a
         >
     </li>
 
     <li>
-        <a
+        <a target="_blank"
             href="https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode"
         >
             <img src="/svelte.svg" alt="svelte logo" />Svelte extension for
@@ -32,16 +32,16 @@
     </li>
 
     <li>
-        <a href="https://desktop.github.com/"
+        <a target="_blank" href="https://desktop.github.com/"
             ><img src="/github.png" alt="github logo" />Github Desktop</a
         >
         or any
-        <a href="https://git-scm.com/downloads"
+        <a target="_blank" href="https://git-scm.com/downloads"
             ><img src="/git.svg" alt="Git" /> Git</a
         > solution you prefer
     </li>
     <li>
-        ! Clone the <a href="stuff">Template Code</a> here using git.
+        ! Clone the <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template">Template Code</a> here using git.
     </li>
 
     <li>
@@ -55,7 +55,7 @@
 <section>
     <h2 class="title">Template Code for Todo app</h2>
     <p>
-        <a href="stuf"> Clone the repo here</a><br />
+        <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template"> Clone the repo here</a><br />
         <br />
         This template repo contains skeleton code for the todo app we will be making.
         It also has some css already to the app look nicer.
@@ -78,7 +78,7 @@
         <img src="/vscode.png" alt="vscode logo" class="large" />
         Vscode
     </h2>
-    <a href="https://code.visualstudio.com/"> Download Vscode Here</a>
+    <a target="_blank" href="https://code.visualstudio.com/"> Download Vscode Here</a>
 
     <p>
         Vscode is a popular code editor that supports most languages and
@@ -98,7 +98,7 @@
         Node.Js
     </h2>
 
-    <a href="https://nodejs.org/en/download/current">Download Node Here</a>
+    <a target="_blank" href="https://nodejs.org/en/download/current">Download Node Here</a>
 
     NodeJs is a "javascript runtime environment". We will just use it as a
     package manager, and to initialize and run our project. Choosing all the
@@ -118,13 +118,13 @@ node -v
         Svelte Extension
     </h2>
 
-    <a
+    <a target="_blank"
         href="https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode"
         >Install the Svelte for Vscode extension</a
     >
 
     This extension probides features syntax highlighting, formatting, auto
-    complete, <a href="https://docs.emmet.io/cheat-sheet/">Emmet</a> etc, so you
+    complete, <a target="_blank" href="https://docs.emmet.io/cheat-sheet/">Emmet</a> etc, so you
     probably want this.
 </section>
 
@@ -134,7 +134,7 @@ node -v
         Vercel
     </h2>
 
-    <a href="https://vercel.com/login">Try loggin to Vercel with your Github</a>
+    <a target="_blank" href="https://vercel.com/login">Try loggin to Vercel with your Github</a>
 
     <p>
         We will be using Vercel to deploy with finished todo. Vercel has a

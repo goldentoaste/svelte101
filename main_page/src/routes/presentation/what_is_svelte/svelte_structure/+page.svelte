@@ -8,7 +8,7 @@
     Svelte files always contains 3 sections. Script, html, and style. Each
     looking similar to their vanilla counter part. <br /> <br />Svelte is
     designed to be
-    <a href="https://github.com/sveltejs/svelte/issues/11052">almost</a> a superset
+    <a target="_blank" href="https://github.com/sveltejs/svelte/issues/11052">almost</a> a superset
     of html, because turns out html is quite a natural way to write web pages, and
     so its nice to have Js in html, instead of html mixed in js functions like with JSX.
 </p>

@@ -118,6 +118,16 @@
                     href:"todo"
                 }
             ]
+        },
+        {
+            title:"Deploy on Vercel",
+            route: "deploy",
+            items:[
+                {
+                    title:"Deploy to Vercel",
+                    href:"vercel"
+                }
+            ]
         }
     ];
 

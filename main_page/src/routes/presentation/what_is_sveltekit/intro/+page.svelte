@@ -7,7 +7,7 @@
     things like routing and SSR, kinda like NextJS to React.
     <br /> <br />
     It is certainly possible to use Svelte without SvelteKit,
-    <a href="https://docs.astro.build/en/concepts/why-astro/">Astro</a> is a popular
+    <a target="_blank" href="https://docs.astro.build/en/concepts/why-astro/">Astro</a> is a popular
     option.
 </p>
 

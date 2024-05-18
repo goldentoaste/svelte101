@@ -1,6 +1,6 @@
 <script lang="ts">
     import Nav, { type NavItem } from "$lib/components/Nav.svelte";
-    import { fade } from "svelte/transition";
+
     import "../global.css";
     import "../gruvbox_prism.css";
     let navTargets: NavItem[] = [
@@ -13,11 +13,11 @@
             text: "Presentation",
         },
         {
-            href: "/",
+            href: "/further_readings",
             text: "Further Readings",
         },
         {
-            href: "test2",
+            href: "/about",
             text: "About",
         },
     ];

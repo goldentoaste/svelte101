@@ -8,7 +8,7 @@
 </p>
 
 <p>
-    (WIP) This repo contains a template project, <a href=""> clone it here</a>. It contains bunch of
+    (WIP) This repo contains a template project, <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template"> clone it here</a>. It contains bunch of
     boiler plate code, comments for objectives, and some simple css to make it look nice.
 </p>
 
