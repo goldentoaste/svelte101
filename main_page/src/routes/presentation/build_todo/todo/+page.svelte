@@ -8,9 +8,14 @@
 </p>
 
 <p>
-    (WIP) This repo contains a template project, <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template"> clone it here</a>. It contains bunch of
+    This repo contains a template project, <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template"> clone it here</a>. It contains bunch of
     boiler plate code, comments for objectives, and some simple css to make it look nice.
 </p>
+
+<img src="/git_template.png" alt="">
+<img src="/git_template2.png" alt="">
+
+<p>Click on the "Use this template" button to start your own repo with the tempalte code! Then use github desktop or your preferred method to download and then open in vscode.</p>
 
 <style>
     /* CSS */
