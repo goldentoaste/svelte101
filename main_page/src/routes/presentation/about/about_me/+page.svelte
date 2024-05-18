@@ -17,6 +17,8 @@
     of wrestling with the framework.
 </p>
 
+<h2>Add me on discord: goldentoaste#8474, if you need want to chat or need help, or do some React slanders.</h2>
+
 
 <div class="projects">
     <div>
