@@ -1,15 +1,17 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import Prism from "svelte-prism";
     import Frame from "$lib/components/Frame.svelte";
 
-    let counter = 0;
-    $: double = counter * 2; // double will be updated whenever 'counter' changes.
+    let counter = $state(0);
+    let double = $derived(counter * 2); // double will be updated whenever 'counter' changes.
 
-    $: {
+    run(() => {
         // this block only runs when 'counter' changes, since 'double' is a derived state.
         console.log(`The counter is reading: ${counter}, double is ${double}.`);
         // do other stuff here.
-    }
+    });
 </script>
 
 <h1 class="title">Reactivity and Events</h1>
@@ -58,6 +60,6 @@
     <p style="margin: 0.5rem;">
         Counter is current: {counter}, doubled is {double}
     </p>
-    <button on:click={(e) => (counter += 1)}>Plus</button>
-    <button on:click={(e) => (counter -= 1)}>Minus</button>
+    <button onclick={(e) => (counter += 1)}>Plus</button>
+    <button onclick={(e) => (counter -= 1)}>Minus</button>
 </Frame>

@@ -1,8 +1,8 @@
 <script>
     import Frame from "$lib/components/Frame.svelte";
     import Prism from 'svelte-prism'
-    let color = "red";
-    let isBig = false;
+    let color = $state("red");
+    let isBig = $state(false);
 </script>
 
 <h1 class="title">Conditional Css class</h1>
@@ -66,9 +66,9 @@
         class:red={color === "red"}
         class:green={color === "green"}
 
-        on:click={e=>isBig = !isBig}
-        on:mouseenter={e=>color='green'}
-        on:mouseleave={e=>color='red'}
+        onclick={e=>isBig = !isBig}
+        onmouseenter={e=>color='green'}
+        onmouseleave={e=>color='red'}
     >
         BOX
     </div>

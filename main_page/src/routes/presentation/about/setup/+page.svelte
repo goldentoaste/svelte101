@@ -4,8 +4,8 @@
 
 <h1 class="title">Setting Up the Environment</h1>
 <p>
-    This sections includes everything you need to get start with Svelte. For
-    experienced web devs, you probably have most things already.
+    This sections includes everything you need to get start with Svelte. For experienced web devs,
+    you probably have most things already.
 </p>
 
 <span>We will be using the following:</span>
@@ -27,8 +27,7 @@
             target="_blank"
             href="https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode"
         >
-            <img src="/svelte.svg" alt="svelte logo" />Svelte extension for
-            Vscode</a
+            <img src="/svelte.svg" alt="svelte logo" />Svelte extension for Vscode</a
         >
     </li>
 
@@ -42,9 +41,7 @@
         > solution you prefer
     </li>
     <li>
-        ! Clone the <a
-            target="_blank"
-            href="https://github.com/goldentoaste/svelte_todo_template"
+        ! Clone the <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template"
             >Template Code</a
         > here using git.
     </li>
@@ -55,34 +52,32 @@
     </li>
 </ul>
 
-<div class="horDiv" />
+<div class="horDiv"></div>
 
 <section>
     <h2 class="title">Template Code for Todo app</h2>
     <p>
-        <a
-            target="_blank"
-            href="https://github.com/goldentoaste/svelte_todo_template"
-        >
+        <a target="_blank" href="https://github.com/goldentoaste/svelte_todo_template">
             Clone the repo here</a
         ><br />
         <br />
-        This template repo contains skeleton code for the todo app we will be making.
-        It also has some css already to the app look nicer.
+        This template repo contains skeleton code for the todo app we will be making. It also has some
+        css already to the app look nicer.
 
         <br /> <br />
-        On the Github page there should be a green button that says "Use this template",
-        which you can use to create a new repo using the template code.
+        On the Github page there should be a green button that says "Use this template", which you can
+        use to create a new repo using the template code.
     </p>
     <img src="/git_template.png" alt="" style="width: 100%;" />
     <img src="/git_template2.png" alt="" style="width: 400px;" />
 
     <p>
-        You can also initialize a new Svelte from scratch if you want to:
-        <Prism language="plain">
-            {"npm create svelte@latest my-app"}
-        </Prism>
+        You can also initialize a new Svelte project from scratch if you want to, type the following
+        in your terminal and follow prompts:
     </p>
+    <Prism language="plain">
+        {"npx sv create"}
+    </Prism>
 </section>
 
 <section>
@@ -90,35 +85,28 @@
         <img src="/vscode.png" alt="vscode logo" class="large" />
         Vscode
     </h2>
-    <a target="_blank" href="https://code.visualstudio.com/">
-        Download Vscode Here</a
-    >
+    <a target="_blank" href="https://code.visualstudio.com/"> Download Vscode Here</a>
 
     <p>
-        Vscode is a popular code editor that supports most languages and
-        frameworks through extensions, in particular Svelte has first-party for
-        support for a vscode extension, and so will be used for this workshop.
-        Installing vscode should be fairly straight forward.
+        Vscode is preferred since it has first-party supported extension.
 
         <br /><br />
-        Some alternative IDEs are JetBrain's WebStorm, or NeoVim are viable as well,
-        with third-party extensions.
+        Alternative IDEs such as JetBrain's WebStorm, or NeoVim are viable as well, using community extensions.
     </p>
 </section>
 
 <section>
-    <h2>
-        <img src="/node.svg" alt="node logo" />
+    <h2 class="title">
+        <img src="/node.svg" alt="node logo" class="large" />
         Node.Js
     </h2>
 
-    <a target="_blank" href="https://nodejs.org/en/download/current"
-        >Download Node Here</a
-    >
+    <a target="_blank" href="https://nodejs.org/en/download/current">Download Node Here</a>
 
-    NodeJs is a "javascript runtime environment". We will just use it as a
-    package manager, and to initialize and run our project. Choosing all the
-    default options in the Node.Js' install wizard should be fine.
+    <p>
+        Node is our "Javascript Engine", it also comes with "npm" which we'll use as our package
+        manager.
+    </p>
 
     <Prism language={"plain"}>
         {`# Test if the installation is successful, if the following prints a version number in terminal
@@ -128,8 +116,8 @@ node -v
 </section>
 
 <section>
-    <h2>
-        <img src="/svelte.svg" alt="ndoe logo" />
+    <h2 class="title">
+        <img src="/svelte.svg" alt="svelte logo" class="large" />
         Svelte Extension
     </h2>
 
@@ -139,23 +127,22 @@ node -v
         >Install the Svelte for Vscode extension</a
     >
 
-    This extension probides features syntax highlighting, formatting, auto
-    complete,
-    <a target="_blank" href="https://docs.emmet.io/cheat-sheet/">Emmet</a> etc,
-    so you probably want this.
+    <p>
+        This extension probides features syntax highlighting, formatting, auto complete,
+        <a target="_blank" href="https://docs.emmet.io/cheat-sheet/">Emmet</a> etc, so you probably want
+        this.
+    </p>
 
-    <br />
-    I would also recommend
-    <a
-        href="https://marketplace.visualstudio.com/items?itemName=MrAmericanMike.sveltesnippets"
-        >this extension</a
-    >, which adds bunch of useful snippets which I use to type the if and each
-    block quicker.
-
-    <br />
-    I would also recommend that in your Vscode settings, set "Explorer: Sort Order"
-    to "filesFirst". This will put files before folders on the left hand side, lets
-    you view svelte or nextjs project more cleanly.
+    <ul>
+        I would also recommend
+        <li>
+            <a
+                href="https://marketplace.visualstudio.com/items?itemName=MrAmericanMike.sveltesnippets"
+                >this extension</a
+            >, collection of useful snippets which I'll be using.
+        </li>
+        <li>Vscode settings, set "Explorer: Sort Order" to "filesFirst".</li>
+    </ul>
 </section>
 
 <section>
@@ -164,15 +151,24 @@ node -v
         Vercel
     </h2>
 
-    <a target="_blank" href="https://vercel.com/login"
-        >Try loggin to Vercel with your Github</a
-    >
+    <a target="_blank" href="https://vercel.com/login">Try loggin to Vercel with your Github</a>
 
     <p>
-        We will be using Vercel to deploy with finished todo. Vercel has a
-        generous free tier, gives you a clean public url, and is *very* easy to
-        deploy to.
+        We will be using Vercel to deploy the finished Todo App. Vercel has a generous free tier,
+        and provides a clean public url.
     </p>
+</section>
+
+<section>
+    <h2 class="title">Bonus: Setup Goolge Cloud/Firebase Account</h2>
+    <p>
+        If we have time during the workshop, we'll try to also integrate Firebase into our app.
+        Otherwise the <a href="https://github.com/goldentoaste/svelte101/tree/main/demo_app"
+            >Completed Demo Todo App</a
+        > will have all the Firebase code as well.
+    </p>
+    <img src="/firebase1.png" alt="firebase1" style="width: 100%; max-width:400px; margin:12px;" />
+    <img src="/firebase2.png" alt="firebase2" style="width: 100%; max-width:400px; margin:12px;" />
 </section>
 
 <style>

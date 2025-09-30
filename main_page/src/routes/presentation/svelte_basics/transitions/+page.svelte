@@ -3,9 +3,9 @@
     import { fly, blur, fade } from "svelte/transition";
     import Frame from "$lib/components/Frame.svelte";
 
-    let showFade = false;
-    let showFly = false;
-    let showBlur = false;
+    let showFade = $state(false);
+    let showFly = $state(false);
+    let showBlur = $state(false);
 </script>
 
 <h1 class="title">Transitions</h1>
@@ -49,10 +49,10 @@
 </Prism>
 
 <Frame>
-    <button on:click={(e) => (showFade = !showFade)}>Toggle Fade</button>
-    <button on:click={(e) => (showFly = !showFly)}>Toggle Fly</button>
+    <button onclick={(e) => (showFade = !showFade)}>Toggle Fade</button>
+    <button onclick={(e) => (showFly = !showFly)}>Toggle Fly</button>
 
-    <button on:click={(e) => (showBlur = !showBlur)}>Toggle Blur</button>
+    <button onclick={(e) => (showBlur = !showBlur)}>Toggle Blur</button>
 
     <div class="hor">
         {#if showFade}

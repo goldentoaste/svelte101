@@ -2,7 +2,8 @@
 
 <script>
     import { createEventDispatcher } from "svelte";
-    export let timeout = 2000;
+    /** @type {{timeout?: number, children?: import('svelte').Snippet}} */
+    let { timeout = 2000, children } = $props();
 
     const dispatch = createEventDispatcher();
 
@@ -13,4 +14,4 @@
     }
 </script>
 
-<button on:click={delayedClick}><slot/></button>
+<button onclick={delayedClick}>{@render children?.()}</button>

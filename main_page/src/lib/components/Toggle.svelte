@@ -1,16 +1,21 @@
 <script lang="ts">
-    export let toggleOn : boolean = false;
+    interface Props {
+        toggleOn?: boolean;
+        children?: import('svelte').Snippet;
+    }
+
+    let { toggleOn = $bindable(false), children }: Props = $props();
 </script>
 
 <div class="toggleRoot">
-    <slot />
+    {@render children?.()}
     <button
-        on:click={() => {
+        onclick={() => {
             toggleOn = !toggleOn;
         }}
     >
-        <div class="square" class:toggleOn />
-        <div class="circle" class:toggleOn />
+        <div class="square" class:toggleOn></div>
+        <div class="circle" class:toggleOn></div>
     </button>
 </div>
 

@@ -21,12 +21,21 @@
 `;
 </script>
 
-<h1 class="title">Variables and Attributes</h1>
+<h1 class="title">$States and Attributes</h1>
 
-<p>
-    Svelte variables are all declared using "let". Variables can reference in
-    html using {"{var_name}"}, like in JSX.
-</p>
+<ul>
+    <li>
+        Svelte states are declared with <b>let</b> and <b>$state()</b>. <br />
+    </li>
+
+    <li>
+        Refer to them in HTML using <b>{"{var_name}"}</b>, like in JSX.
+    </li>
+
+    <li>
+        Whenever $states are updated, their dependant components updates.
+    </li>
+</ul>
 
 <Prism language="svelte" source="">
     {code}
@@ -38,5 +47,5 @@
 
     <!-- we have a variable called 'src', so the attr name doesn't need to be there -->
     <!-- attr value can also be variable like 'imageName', or any js has a value. -->
-    <img {src} alt={imageName} class="logo" style="width:200px">
+    <img {src} alt={imageName} class="logo" style="width:200px" />
 </Frame>

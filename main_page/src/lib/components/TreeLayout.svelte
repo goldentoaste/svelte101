@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
     import { onMount } from "svelte";
 
     export interface Chapter {
@@ -13,22 +13,27 @@
         href: string;
     }
 
-    export let prevUrl = writable<string | undefined>(undefined);
-    export let nextUrl = writable<string | undefined>(undefined);
+    export const treeState = $state<{ prevUrl: string | undefined; nextUrl: string | undefined }>({
+        prevUrl: undefined,
+        nextUrl: undefined,
+    });
 </script>
 
 <script lang="ts">
     import { afterNavigate } from "$app/navigation";
     import { fly } from "svelte/transition";
-    import { writable } from "svelte/store";
 
-    export let chapters: Chapter[] = [];
-    export let rootRoute: string;
+    interface Props {
+        chapters?: Chapter[];
+        rootRoute: string;
+    }
 
-    let chapterSizes: number[] = [];
+    let { chapters = $bindable([]), rootRoute }: Props = $props();
 
-    let selectedChap = -1;
-    let selectedItem = -1;
+    let chapterSizes: number[] = $state([]);
+
+    let selectedChap = $state(-1);
+    let selectedItem = $state(-1);
     let hrefToIndex: { [href: string]: [number, number] } = {};
 
     chapters.forEach((i) => {
@@ -80,24 +85,24 @@
         }
         if (selectedItem < length - 1) {
             const chapter = chapters[selectedChap];
-            $nextUrl = `/${rootRoute}/${chapter.route}/${chapter.items[selectedItem + 1].href}`;
+            treeState.nextUrl = `/${rootRoute}/${chapter.route}/${chapter.items[selectedItem + 1].href}`;
         } else if (selectedChap < chapters.length - 1) {
             const chapter = chapters[selectedChap + 1];
-            $nextUrl = `/${rootRoute}/${chapter.route}/${chapter.items[0].href}`;
+            treeState.nextUrl = `/${rootRoute}/${chapter.route}/${chapter.items[0].href}`;
         } else {
-            $nextUrl = undefined;
+            treeState.nextUrl = undefined;
         }
 
         if (selectedItem > 0) {
             const chapter = chapters[selectedChap];
-            $prevUrl = `/${rootRoute}/${chapter.route}/${chapter.items[selectedItem - 1].href}`;
+            treeState.prevUrl = `/${rootRoute}/${chapter.route}/${chapter.items[selectedItem - 1].href}`;
         } else if (selectedChap > 0) {
             const chapter = chapters[selectedChap - 1];
-            $prevUrl = `/${rootRoute}/${chapter.route}/${
+            treeState.prevUrl = `/${rootRoute}/${chapter.route}/${
                 chapter.items[chapter.items.length - 1].href
             }`;
         } else {
-            $prevUrl = undefined;
+            treeState.prevUrl = undefined;
         }
     });
 </script>
@@ -105,11 +110,11 @@
 <div class="treeContainer">
     {#each chapters as chapter, chapIndex (chapter.title)}
         <div>
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
             <div
                 id={"" + chapIndex}
                 class="title"
-                on:click={() => {
+                onclick={() => {
                     chapters[chapIndex].open = !chapters[chapIndex].open;
                     chapters = chapters;
                 }}
@@ -131,7 +136,7 @@
                                     transition:fly={{
                                         x: -10,
                                     }}
-                                />
+                                ></div>
                             {/if}
                             <a href={route + item.href}
                                 >{chapIndex + 1}.{itemIndex + 1} {item.title}</a
@@ -159,6 +164,10 @@
         max-height: 70vh;
 
         padding-bottom: 1rem;
+
+        scrollbar-width: thin;
+        scrollbar-color: var(--fg0) var(--bg1);
+        scrollbar-gutter: stable;
     }
 
     .title {

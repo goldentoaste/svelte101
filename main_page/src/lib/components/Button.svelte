@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     export type ButtonParam = {
         href?: string;
         path?: string;
@@ -8,31 +8,45 @@
 </script>
 
 <script lang="ts">
-    import { goto } from "$app/navigation";
-    import { page } from "$app/stores";
-    import { createEventDispatcher } from "svelte";
     import { fly } from "svelte/transition";
-    export let href: string = "";
-    export let path: string = "";
-    export let selected: boolean = false;
-    export let key = "clip";
-    export let style = "";
-    export let id = "";
-
-    const dispatch = createEventDispatcher();
-
-    function onclick(e: MouseEvent) {
-        if (
-            href &&
-            href !== ($page.route?.id?.replace(/\/?\(\w+\)/g, "") || "/") // do nothing if navigating to current page
-        ) {
-            goto(href, {
-                noScroll: true,
-            });
-        }
-        dispatch("click", e);
+    interface Props {
+        href?: string;
+        path?: string;
+        selected?: boolean;
+        key?: string;
+        style?: string;
+        id?: string;
+        onclick?: () => void;
+        children?: import("svelte").Snippet;
     }
+
+    let {
+        href = "",
+        path = "",
+        selected = false,
+        key = "clip",
+        style = "",
+        id = "",
+        children,
+        onclick,
+    }: Props = $props();
 </script>
+
+{#snippet Content()}
+    <button {onclick} {style} class:selected>
+        {#if path}
+            <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id={key} clipPathUnits="objectBoundingBox">
+                        <path d={path} fill="black"></path>
+                    </clipPath>
+                </defs>
+            </svg>
+            <div class="icon" style="clip-path: url('#{key}');"></div>
+        {/if}
+        {@render children?.()}
+    </button>
+{/snippet}
 
 <div class="buttonParent" {id}>
     {#if !selected}
@@ -74,22 +88,23 @@
         ></div>
     {/if}
     <div id="backplate"></div>
-    <button on:click={onclick} {style}>
-        {#if path}
-            <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <clipPath id={key} clipPathUnits="objectBoundingBox">
-                        <path d={path} fill="black" />
-                    </clipPath>
-                </defs>
-            </svg>
-            <div class="icon" style="clip-path: url('#{key}');" />
-        {/if}
-        <slot />
-    </button>
+    {#if href}
+        <a {href}>
+            {@render Content()}
+        </a>
+    {:else}
+        {@render Content()}
+    {/if}
 </div>
 
 <style>
+    a {
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+    }
     .decor {
         position: absolute;
         background-color: var(--orange);
@@ -122,6 +137,11 @@
         padding: 0.75rem;
 
         border: var(--bg5) solid 2px;
+        transition: border-color 250ms ease-out;
+    }
+
+    button.selected {
+        border-color: var(--red);
     }
 
     .buttonParent:hover > .decor {

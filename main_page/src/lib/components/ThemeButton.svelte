@@ -5,10 +5,14 @@
     import { onMount } from "svelte";
 
     import { fade, fly } from "svelte/transition";
-    export let style = "";
 
-    let show = false;
-    export let darkModeEnabled = true;
+    let show = $state(false);
+    interface Props {
+        style?: string;
+        darkModeEnabled?: boolean;
+    }
+
+    let { style = "", darkModeEnabled = $bindable(true) }: Props = $props();
     onMount(() => {
         darkModeEnabled = Cookies.get("theme") !== "light"; // defaults to dark if no cookies found
         show = true;
@@ -23,7 +27,7 @@
 {#if show}
     <button
         transition:fade
-        on:click={() => {
+        onclick={() => {
             if (browser && document !== undefined) {
                 darkModeEnabled = !darkModeEnabled;
                 document.documentElement.setAttribute(

@@ -1,8 +1,8 @@
 <script>
     import Frame from "$lib/components/Frame.svelte";
     import Prism from "svelte-prism";
-    let showItem = false;
-    let foodType = "pizza";
+    let showItem = $state(false);
+    let foodType = $state("pizza");
 </script>
 
 <h1 class="title">Conditional Rendering (If block)</h1>
@@ -39,9 +39,9 @@
 </Prism>
 
 <Frame>
-    <button on:click={(e) => (showItem = !showItem)}>Toggle label</button>
+    <button onclick={(e) => (showItem = !showItem)}>Toggle label</button>
     <button
-        on:click={(e) => (foodType = foodType === "pizza" ? "burger" : "pizza")}
+        onclick={(e) => (foodType = foodType === "pizza" ? "burger" : "pizza")}
     >
         Toggle food
     </button>

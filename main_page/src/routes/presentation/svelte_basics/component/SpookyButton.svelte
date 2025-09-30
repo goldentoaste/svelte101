@@ -1,12 +1,16 @@
 
 
 <script>
-    export let ghostName = "";
+    import { createBubbler } from 'svelte/legacy';
+
+    const bubble = createBubbler();
+    /** @type {{ghostName?: string, children?: import('svelte').Snippet}} */
+    let { ghostName = "", children } = $props();
 </script>
 
 <!-- forward the on:click event by declare but handling it -->
-<button on:click>
-    {ghostName} says: <slot/>
+<button onclick={bubble('click')}>
+    {ghostName} says: {@render children?.()}
 </button>
 
 <style>

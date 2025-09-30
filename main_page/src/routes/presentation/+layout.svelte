@@ -1,15 +1,15 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
     import Button from "$lib/components/Button.svelte";
-    import TreeLayout, {
-        type Chapter,
-    } from "$lib/components/TreeLayout.svelte";
-
-    import { prevUrl, nextUrl } from "$lib/components/TreeLayout.svelte";
-    import { presentMode } from "$lib/globals";
+    import TreeLayout, { treeState, type Chapter } from "$lib/components/TreeLayout.svelte";
+    import { globals } from "$lib/globals.svelte";
 
     //@ts-ignore
     import { globalConfig } from "svelte-prism";
+    interface Props {
+        children?: import("svelte").Snippet;
+    }
+
+    let { children }: Props = $props();
     //@ts-ignore
     globalConfig.transform = (x) => x.replace(/\*\{\}/g, "");
 
@@ -41,7 +41,7 @@
                     href: "what_is_svelte",
                 },
                 {
-                    title: "Pros and Cons",
+                    title: "Why not Svelte?",
                     href: "pros_cons",
                 },
                 {
@@ -132,9 +132,9 @@
         },
     ];
 
-    let showLeft = true;
+    let showLeft = $state(false);
     function handleHover(e: MouseEvent) {
-        if (!$presentMode) {
+        if (!globals.presentMode) {
             return;
         }
 
@@ -147,44 +147,32 @@
         }
     }
 
-    $: if ($presentMode) {
-        showLeft = false;
-    } else {
-        showLeft = true;
-    }
+    $effect(() => {
+        if (globals.presentMode) {
+            showLeft = false;
+        } else {
+            showLeft = true;
+        }
+    });
 </script>
 
-<svelte:body on:mousemove={handleHover} />
+<svelte:body onmousemove={handleHover} />
 
 <div id="page">
-    <div id="left" class:presentMode={$presentMode} class:show={showLeft}>
+    <div id="left" class:presentMode={globals.presentMode} class:show={showLeft}>
         <TreeLayout rootRoute="presentation" {chapters} />
     </div>
 
-    <div id="center" class:presentMode={$presentMode}>
-        <slot />
+    <div id="center" class:presentMode={globals.presentMode}>
+        {@render children?.()}
 
         <div class="bottomNav">
-            <Button
-                on:click={() => {
-                    if ($prevUrl !== undefined) {
-                        goto($prevUrl);
-                    }
-                }}>Previous</Button
-            >
-            <Button
-                on:click={() => {
-                    if ($nextUrl !== undefined) {
-                        console.log($nextUrl);
-
-                        goto($nextUrl);
-                    }
-                }}>Next</Button
-            >
+            <Button href={treeState.prevUrl}>Previous</Button>
+            <Button href={treeState.nextUrl}>Next</Button>
         </div>
     </div>
 
-    <div id="right" class:presentMode={$presentMode} />
+    <div id="right" class:presentMode={globals.presentMode}></div>
 </div>
 
 <style>

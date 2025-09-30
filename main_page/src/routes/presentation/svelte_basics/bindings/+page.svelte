@@ -3,9 +3,9 @@
 
     import Frame from "$lib/components/Frame.svelte";
 
-    let text = "";
+    let text = $state("");
 
-    let items: string[] = [];
+    let items: string[] = $state([]);
 </script>
 
 <h1 class="title">Variable Bindings and More on Lists</h1>
@@ -50,7 +50,7 @@
 
 <Frame>
   
-    <form on:submit={() => {
+    <form onsubmit={() => {
             items = [...items, text];
             text = "";
         }}>

@@ -1,7 +1,7 @@
 <div class="hor" style="width: auto;">
     <div class="ver">
         <h1 class="title" style="font-size: 50px;">Intro to Svelte!</h1>
-        <h2>Stormhacks 2024</h2>
+        <h2>Stormhacks 2025</h2>
     </div>
 
     <img
@@ -28,8 +28,8 @@
         
     </li>
     <li>Build a simple Todo list app!</li>
-    <li>Deploy the web app to Vercel (It's shockly easy)</li>
-    <li>Stetch goal: connect the todo app to an api</li>
+    <li>Deploy the web app to Vercel</li>
+    <li>Stretch goal: connect the todo app to an api</li>
 </ul>
 
 <p>Since Svelte is a relatively new framework, the workshop makes comparisons to React and NextJS, but new web devs can also try to follow along.</p>

@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
     export interface NavItem {
         text: string;
         href: string;
@@ -10,54 +10,54 @@
     import ThemeButton from "./ThemeButton.svelte";
     import Toggle from "./Toggle.svelte";
 
-    import { presentMode } from "$lib/globals";
     import { afterNavigate } from "$app/navigation";
+    import { globals } from "$lib/globals.svelte";
 
-    export let items: NavItem[];
+    interface Props {
+        items: NavItem[];
+    }
 
-    let selectedIndex = 0;
-    let showNav = true;
+    let { items }: Props = $props();
+
+    let selectedIndex = $state(0);
+    let showNav = $state(true);
 
     function handleHover(e: MouseEvent) {
-        if (!$presentMode) {
+        if (!globals.presentMode) {
             return;
         }
 
         if (e.clientY < 50) {
             showNav = true;
-            document.body.style.setProperty("padding-top", "var(--topPad)")
-
+            document.body.style.setProperty("padding-top", "var(--topPad)");
         }
 
         if (e.clientY > 120) {
             showNav = false;
-            document.body.style.setProperty("padding-top", "2rem")
-
+            document.body.style.setProperty("padding-top", "2rem");
         }
     }
 
-    afterNavigate((nav)=>{
+    afterNavigate((nav) => {
         items.forEach((val, index) => {
-            console.log( nav.to?.route.id!,  val.href);
-            
-            if ( nav.to?.route.id?.indexOf(val.href)! >= 0){
+            if (nav.to?.route.id?.startsWith(val.href)) {
                 selectedIndex = index;
             }
         });
-    })
+    });
 </script>
 
-<svelte:body on:mousemove={handleHover} />
+<svelte:body onmousemove={handleHover} />
 
 <nav id="navParent" class:showNav>
     <div style="display: flex; flex-direction:row; align-items:center; gap:0.5rem;">
         <img src="/svelte.svg" alt="svelte logo" />
         <h1>Svelte Intro!</h1>
     </div>
-    <ButtonGroup {selectedIndex} buttonParams={items} />
+    <ButtonGroup bind:selectedIndex buttonParams={items} />
 
     <div style="margin-left:auto; display:flex; gap: 1rem">
-        <Toggle bind:toggleOn={$presentMode}>Present Mode</Toggle>
+        <Toggle bind:toggleOn={globals.presentMode}>Present Mode</Toggle>
 
         <ThemeButton />
     </div>

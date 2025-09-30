@@ -1,9 +1,3 @@
 
-
-Scan the qr code! (but wait, this is a desktop site :skull:)
-
-<img src="/qrcode.png" alt="https://github.com/goldentoaste/svelte101">
-
-
-
-
+Svelte 101, a Svelte introduction slideshow site.
+Last updated for Stormhacks 2025 Workshop, Oct, 1st. Using Svelte V5.38.0

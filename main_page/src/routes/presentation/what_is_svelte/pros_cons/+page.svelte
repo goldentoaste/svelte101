@@ -1,36 +1,32 @@
-<h1 class="title">Pros and Cons of Svelte</h1>
+<h1 class="title">Why <i>not</i> use Svelte?</h1>
 
-<div class="hor" style="width: 100%;">
-    <div class="ver" style="flex:1">
-        <h1 class="title" style="margin-left: 2rem;">Pros</h1>
-        <div class="horDiv"></div>
-        <ul>
-            <li>More developer focused framework design</li>
-            <li>Beginner friendly</li>
-            <li>Simplified state managment, highly reactive</li>
-            <li>Good runtime performance</li>
-            <li>"Batteries Included"</li>
-            <li>High compability with vanilla JS libraries</li>
-        </ul>
-    </div>
-    <div class="verDiv"></div>
-    <div class="ver" style="flex:1">
-        <h1 class="title" style="margin-left: 2rem;">Cons</h1>
-        <div class="horDiv"></div>
+<ul>
+    <li>It's still another framework to learn</li>
+    <li>Different workflow compared to other frameworks, for better for worse.</li>
+    <li>Smaller community support/ecosystem compared to React.</li>
+    <li>Still actively developed, too much change for most corporate/commercial use.</li>
+    <li>Very few posted jobs... 💀</li>
+</ul>
 
-        <ul>
-            <li>It's still another framework to learn</li>
-            <li>Unique workflow compared to other frameworks</li>
-            <li>Smaller community and ecosytem</li>
-            <li>Under active development</li>
-            <li>Less jobs 💀</li>
-        </ul>
-    </div>
-</div>
+<h3 class="title">Updated for 2025</h3>
+<p>
+    Svelte 5 released last year, which changed quite a lot of basic syntax. Most LLMs are not
+    trained using the new syntax, thus often gives poor results with a mix of old and new content.
+    When prompting or using LLM assisted IDEs (copilot, cursor etc), try providing:
+</p>
+<ul>
+    <li>
+        Svelte 5 docs llms.txt: <a href="https://svelte.dev/docs/svelte/llms.txt"
+            >https://svelte.dev/docs/svelte/llms.txt</a
+        > (test)
+    </li>
+    <li>
+        Your existing codebase that already contains decent Svelte 5 code.
+    </li>
+    <li><a href="https://chatgpt.com/share/68db9e15-db00-8006-8ba8-52931020aa05">
+    GPT-5 Seems to read llms.txt 🤷‍♂️
+</a></li>
+</ul>
 
 <style>
-    li {
-        font-size: large;
-        margin: 1rem 0;
-    }
 </style>
