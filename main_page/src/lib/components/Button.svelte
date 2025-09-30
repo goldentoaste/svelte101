@@ -50,42 +50,10 @@
 
 <div class="buttonParent" {id}>
     {#if !selected}
-        <div
-            out:fly={{
-                duration: 400,
-                x: -3,
-                y: -3,
-            }}
-            class="decor"
-            id="upleft"
-        ></div>
-        <div
-            out:fly={{
-                duration: 400,
-                x: 3,
-                y: -3,
-            }}
-            class="decor"
-            id="upright"
-        ></div>
-        <div
-            out:fly={{
-                duration: 400,
-                x: -3,
-                y: 3,
-            }}
-            class="decor"
-            id="downleft"
-        ></div>
-        <div
-            out:fly={{
-                duration: 400,
-                x: 3,
-                y: 3,
-            }}
-            class="decor"
-            id="downright"
-        ></div>
+        <div class="decor" id="upleft"></div>
+        <div class="decor" id="upright"></div>
+        <div class="decor" id="downleft"></div>
+        <div class="decor" id="downright"></div>
     {/if}
     <div id="backplate"></div>
     {#if href}

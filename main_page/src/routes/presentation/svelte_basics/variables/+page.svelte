@@ -2,9 +2,10 @@
     import Frame from "$lib/components/Frame.svelte";
     import Prism from "svelte-prism";
 
-    let name = "svelte";
+    const name = "svelte";
     let src = "/svelte.svg";
     let imageName = "svelte logo";
+    let rotated = $state(false);
 
     let code = `\<script\>
     let name = "svelte";
@@ -12,12 +13,25 @@
     let imageName = "svelte logo";
 <\/script\>
 
-<!-- here {name} is a declared variable -->
-<h2>Hi, I am {name}!</h2>
+<img
+    {src}
+    alt={imageName}
+    class="logo"
+    style="width:200px; transform: rotate({rotated ? 0 : 90}deg);"
+/>
+<!-- rotated is a $state, so the corresponding element is updated. -->
+<button onclick={()=>{
+    rotated = !rotated;
+}}>
+    Rotate!
+</button>
 
-<!-- we have a variable called 'src', so the attr name doesn't need to be there -->
-<!-- attr value can also be variable like 'imageName', or any js has a value. -->
-<img {src} alt={imageName} class="logo" style="width:200px">
+<button onclick={()=>{
+    src = "what ever"; // since src is not a $state, it does not cause update.
+    // basically src is a useRef() in React
+}}>
+    Do whatever
+</button>
 `;
 </script>
 
@@ -32,9 +46,7 @@
         Refer to them in HTML using <b>{"{var_name}"}</b>, like in JSX.
     </li>
 
-    <li>
-        Whenever $states are updated, their dependant components updates.
-    </li>
+    <li>Whenever $states are updated, their dependant components updates.</li>
 </ul>
 
 <Prism language="svelte" source="">
@@ -47,5 +59,31 @@
 
     <!-- we have a variable called 'src', so the attr name doesn't need to be there -->
     <!-- attr value can also be variable like 'imageName', or any js has a value. -->
-    <img {src} alt={imageName} class="logo" style="width:200px" />
+    <img
+        {src}
+        alt={imageName}
+        class="logo"
+        style="width:200px; transform: rotate({rotated ? 0 : 90}deg);"
+    />
+    <!-- rotated is a $state, so the corresponding element is updated. -->
+    <button onclick={()=>{
+        rotated = !rotated;
+    }}>
+        Rotate!
+    </button>
+
+    <button onclick={()=>{
+        src = "what ever"; // since src is not a $state, it does not cause update.
+        // basically src is a useRef() in React
+    }}>
+        Do whatever
+    </button>
 </Frame>
+
+
+<style>
+    img {
+        transition: transform 350ms ease-out;
+    }
+</style>
+
