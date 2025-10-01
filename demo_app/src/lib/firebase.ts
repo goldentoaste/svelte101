@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "firebase/app";
-import { addDoc, arrayRemove, arrayUnion, collection, doc, getDoc, getDocs, getFirestore, increment, onSnapshot, query, QueryDocumentSnapshot, setDoc, updateDoc } from "firebase/firestore";
-import type { Post } from "./types";
+import { addDoc, arrayRemove, arrayUnion, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, increment, onSnapshot, query, QueryDocumentSnapshot, setDoc, updateDoc } from "firebase/firestore";
+import type { Todo } from "./types";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -30,64 +30,32 @@ const firebaseConfig = {
 
 };
 
-
 // Initialize Firebase
-
-
-
-// Initialize Firebase
-
 export const firebase = initializeApp(firebaseConfig);
 export const db = getFirestore(firebase)
 
-export async function newPost(userName: string, content: string) {
+export async function setTodoItem(todo: Todo) {
 
-    // make a ref to a collection called posts, then add a doc to it
-    await addDoc(collection(db, "posts"), {
-        // each json field is converted to a document property in firebase
-        userName: userName,
-        content: content,
-        likes: 0
-    })
+    // make a docRef to the document we are about to create/update
+    const docRef = doc(db, "todos", todo.id);
+    await setDoc(
+        docRef, // path for where to insert
+        todo, // our object to insert/update
+        { merge: true } // set options, merge = true, means update existing document if it exist, create it otherwise
+    );
+}
+
+export async function deleteTodoItem(todo: Todo) {
+    const docRef = doc(db, "todos", todo.id);
+    await deleteDoc(docRef,);
 }
 
 
-export async function addLike(postid: string, userName: string) {
+export function onTodoChange(onChange: (changes: Todo[]) => void) {
+    console.log("subscribing...");
 
-    console.log(postid, userName);
-    
-    // functions like doc and collection takes any number of string args as the path to doc or collection
-    await updateDoc(doc(db, 'posts', postid), {
-        // increment is a kind of special function in the value field to represent an action on the db
-        likes: increment(1)
-    })
-
-    // also add a record to track which posts the current user liked already
-    await setDoc(doc(db, "likes", userName), {
-        likes: arrayUnion(postid) // adds postid to the array, but do nothing if its already in.
-    }, {
-        // when merge is true, setDoc acts like updateDoc, but also creates the doc if it doenst exist yet.
-        merge: true
-    })
-}
-
-
-export async function removeLike(postid: string, userName: string) {
-    await updateDoc(doc(db, "posts", postid), {
-        likes: increment(-1)
-    })
-
-    await setDoc(doc(db, "likes", userName), {
-        likes: arrayRemove(postid)
-    }, {
-        merge: true
-    })
-}
-
-
-export async function onPostChange(onChange: (changes: Post[]) => void) {
-    const unsub = onSnapshot(query(collection(db, "posts")), snap => {
-        const posts: Post[] = [];
+    const unsub = onSnapshot(query(collection(db, "todos")), snap => {
+        const todoItems: Todo[] = [];
 
         // .docChanges() contains only the changes, while .doc contains all the docs.
         // note that onSnapshots read everything on the first call, so could be expensive
@@ -97,26 +65,12 @@ export async function onPostChange(onChange: (changes: Post[]) => void) {
 
             // document in db doesnt include a id field so we are going to include it
             data.id = change.doc.id;
-            posts.push( data as Post);
+            todoItems.push(data as Todo);
         })
 
         // call the callback to notify frontend that this batch of posts needs to be updated.
-        onChange(posts);
-        
+        onChange(todoItems);
     })
 
     return unsub;
-}
-
-export async function getUserLikes(userName: string) {
-
-    // get each posts the current user liked
-    const userLikeDoc = await getDoc(doc(db, "likes", userName))
-
-    if (userLikeDoc.exists()){
-
-        return userLikeDoc.data().likes as string[];
-    }
-    return [];
-
 }

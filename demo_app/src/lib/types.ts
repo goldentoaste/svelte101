@@ -1,9 +1,8 @@
 
 
-export interface Post {
+export interface Todo {
     id: string;
-    userName: string;
-    content: string;
-    likes: number;
+    title: string;
+    done: boolean;
 }
 

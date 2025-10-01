@@ -1,7 +1,15 @@
 <script lang="ts">
-    import NavBar, { type NavItem } from "$lib/components/generics/NavBar.svelte";
-    
-    import "../global.css"; // its nice to have a style sheet applied to the entire app, this is one way to do it.
+    import type { NavItem } from "$lib/components/NavBar.svelte";
+    import NavBar from "$lib/components/NavBar.svelte";
+
+
+
+    import "../global.css";
+    interface Props {
+        children?: import('svelte').Snippet;
+    }
+
+    let { children }: Props = $props(); // its nice to have a style sheet applied to the entire app, this is one way to do it.
 
     let navTargets: NavItem[] = [
         {
@@ -10,7 +18,7 @@
         },
         {
             name: "Todo",
-            target: "/message",
+            target: "/todo",
         },
         {
             name: "About",
@@ -24,4 +32,4 @@
 <!-- make the NavBar in layout so that every subpage gets it. -->
 <NavBar navItems={navTargets} />
 
-<slot />
+{@render children?.()}

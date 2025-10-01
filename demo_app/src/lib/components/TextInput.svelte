@@ -1,18 +1,24 @@
 <script lang="ts">
-    export let value: string ="Default name";
+    interface Props {
+        value?: string;
+        placeholder?: string;
+        label?: string;
+        style?: string;
+    }
 
-    export let placeholder = "type here...";
-    export let disabled = false;
-    export let label = "";
-
-    export let style ="";
+    let {
+        value = $bindable("Default name"),
+        placeholder = "type here...",
+        label = "",
+        style = ""
+    }: Props = $props();
 </script>
 
 <div id="inputHolder" {style}>
     {#if label.length > 0}
         <label for="textinput">{label}</label>
     {/if}
-    <input name="textinput" type="text" bind:value {placeholder} {disabled}/>
+    <input id="textinput" type="text" bind:value {placeholder}/>
 </div>
 
 <style>

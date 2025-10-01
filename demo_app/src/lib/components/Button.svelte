@@ -1,12 +1,19 @@
-<script>
-    export let disabled = false;
-    export let highLighted = false;
-    export let style = "";
+<script lang="ts">
+    import type { Snippet } from "svelte";
+
+    interface Props {
+        disabled?: boolean;
+        style?: string;
+        onclick: () => void;
+        children: Snippet;
+    }
+
+    let { disabled = false, style = "", onclick, children }: Props = $props();
 </script>
 
 <!-- bubbles on click -->
-<button class:disabled class:highLighted {disabled} on:click {style}>
-    <slot />
+<button class:disabled {disabled} {onclick} {style}>
+    {@render children?.()}
 </button>
 
 <style>
@@ -33,9 +40,5 @@
     .disabled {
         filter: brightness(0.6);
         pointer-events: none;
-    }
-
-    .highLighted {
-        border: var(--red) 2px solid;
     }
 </style>

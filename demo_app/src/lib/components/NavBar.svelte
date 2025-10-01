@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
     /**
         each .svelte is actually sort of a javascript/typescript file in disguise.
         context="module" indicates functions and exports declared here delongs to the actual script.
@@ -15,9 +15,13 @@
 
     // lang = 'ts' indicate this component opts in on typescript
 
-    export let navItems: NavItem[] = [];
+    interface Props {
+        navItems?: NavItem[];
+    }
 
-    let currentRoute = ""; // when this changes, the match anchor tag will update in the #each block.
+    let { navItems = [] }: Props = $props();
+
+    let currentRoute = $state(""); // when this changes, the match anchor tag will update in the #each block.
 
     afterNavigate((nav) => {
         // when a page is loaded, we can check the url from nav here.

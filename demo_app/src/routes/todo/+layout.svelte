@@ -1,7 +1,12 @@
+<script lang="ts">
+
+    let { children } = $props();
+</script>
+
 <div class="root">
     <!-- todoRoot provides styling for the page. -->
     <!-- this 'slot' will be replace by the page -->
-    <slot />
+    {@render children?.()}
 </div>
 
 <style>
