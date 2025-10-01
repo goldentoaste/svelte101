@@ -10,7 +10,7 @@
 <h1 class="title">Conditional Rendering (If block)</h1>
 
 <p>
-    Svelte uses the <a href="https://svelte.dev/docs/svelte/if">{"{#if ...}"}</a> syntax to do conditional rendering. It
+    Svelte uses the <a target="_blank" href="https://svelte.dev/docs/svelte/if">{"{#if ...}"}</a> syntax to do conditional rendering. It
     is similar to if else statements in most languages and can be nested. This avoids
     need for nested ternery like in JSX (🤮 {"{showA ? <CompA/> : (showB ? <CompB/> : '??')}... or how about {showA && <CompA/>} "}).
 </p>

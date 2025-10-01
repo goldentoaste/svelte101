@@ -44,11 +44,11 @@
         For example here are some UI component libs to choose from:
         <ul>
             <li>
-                <a href="https://shadcn-svelte.com/">ShadCn for Svelte</a>
+                <a target="_blank" href="https://shadcn-svelte.com/">ShadCn for Svelte</a>
             </li>
-            <li><a href="https://www.melt-ui.com/">Melt UI</a></li>
+            <li><a target="_blank" href="https://www.melt-ui.com/">Melt UI</a></li>
             <li>
-                <a href="https://www.skeleton.dev/">Skeleton UI</a>
+                <a target="_blank" href="https://www.skeleton.dev/">Skeleton UI</a>
             </li>
         </ul>
     </li>

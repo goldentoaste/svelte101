@@ -18,19 +18,19 @@
 
 <p>
     Derived states can be declared with <b>$derived(...)</b>, or by using
-    <a href="https://svelte.dev/docs/svelte/$derived#$derived.by">$derived.by(()=>...)</a>. Contents
+    <a target="_blank" href="https://svelte.dev/docs/svelte/$derived#$derived.by">$derived.by(()=>...)</a>. Contents
     of the derived state is updated automatically whenever its dependencies are changed. (This is
     very similar to useMemo in React)
 </p>
 
 <p>
     When we want to <i>do things</i> whenever a state is changed, we can use a
-    <a href="https://svelte.dev/docs/svelte/$effect">$effect(()=>...)</a>, the callback in $effect
+    <a target="_blank" href="https://svelte.dev/docs/svelte/$effect">$effect(()=>...)</a>, the callback in $effect
     will run whenever states within changes.(This is similar to useEffect in React)
 </p>
 
 <p>
-    Note: use <a href="https://svelte.dev/docs/svelte/$inspect">$inspect(var1, var2...)</a> instead of
+    Note: use <a target="_blank" href="https://svelte.dev/docs/svelte/$inspect">$inspect(var1, var2...)</a> instead of
     a effect to log a state whenever it changes! ($inspects are automatically removed when deployed to
     prod.)
 </p>

@@ -14,7 +14,7 @@
 
 <p>
     Components can take in props just like a html element can. We read them using
-    <a href="https://svelte.dev/docs/svelte/$props">$props() rune. </a>. (Using typescript typing
+    <a target="_blank" href="https://svelte.dev/docs/svelte/$props">$props() rune. </a>. (Using typescript typing
     for props is strongly recommended!)
 </p>
 
@@ -24,10 +24,10 @@
 </p> -->
 
 <p>
-    We can also accept <a href="https://svelte.dev/docs/svelte/snippet">"Snippets"</a> as a prop, in
+    We can also accept <a target="_blank" href="https://svelte.dev/docs/svelte/snippet">"Snippets"</a> as a prop, in
     order to write more generic components. <b>children</b> is a speical prop name, it will be the
     content between this component's tags, when used. The special
-    <a href="https://svelte.dev/docs/svelte/@render">{"{@render Snip(a, b)}"}</a> syntax is used to display
+    <a target="_blank" href="https://svelte.dev/docs/svelte/@render">{"{@render Snip(a, b)}"}</a> syntax is used to display
     a Snippet.
 </p>
 

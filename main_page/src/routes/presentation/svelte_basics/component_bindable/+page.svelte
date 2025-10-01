@@ -10,7 +10,7 @@
 <h1 class="title">Component props $bindable</h1>
 
 <p>
-    Just like a Html element, components can have <a href="https://svelte.dev/docs/svelte/$bindable"
+    Just like a Html element, components can have <a target="_blank" href="https://svelte.dev/docs/svelte/$bindable"
         >$bindable</a
     >
     props too, by declaring them to be bindable when accepting $props:

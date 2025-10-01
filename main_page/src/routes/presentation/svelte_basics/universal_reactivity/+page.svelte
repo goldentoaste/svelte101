@@ -10,11 +10,11 @@
 <h1 class="title">Universal Reactivity</h1>
 
 <p>
-    A new feature of Svelte 5 is <a href="https://svelte.dev/tutorial/svelte/universal-reactivity">
+    A new feature of Svelte 5 is <a target="_blank" href="https://svelte.dev/tutorial/svelte/universal-reactivity">
         Universal Reactivity</a
     >, that is, to be able to declare Svelte states within <b>name.svelte.ts</b> files, outside of
     components. This makes it easy to create shared states, or create re-usable stateful objects
-    using <a href="https://svelte.dev/docs/svelte/$state#Classes">classes</a>.
+    using <a target="_blank" href="https://svelte.dev/docs/svelte/$state#Classes">classes</a>.
 </p>
 
 <p>The following are some longer examples from SH25 site.</p>

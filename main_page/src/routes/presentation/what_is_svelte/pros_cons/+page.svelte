@@ -16,14 +16,14 @@
 </p>
 <ul>
     <li>
-        Svelte 5 docs llms.txt: <a href="https://svelte.dev/docs/svelte/llms.txt"
+        Svelte 5 docs llms.txt: <a target="_blank" href="https://svelte.dev/docs/svelte/llms.txt"
             >https://svelte.dev/docs/svelte/llms.txt</a
         > (test)
     </li>
     <li>
         Your existing codebase that already contains decent Svelte 5 code.
     </li>
-    <li><a href="https://chatgpt.com/share/68db9e15-db00-8006-8ba8-52931020aa05">
+    <li><a target="_blank" href="https://chatgpt.com/share/68db9e15-db00-8006-8ba8-52931020aa05">
     GPT-5 Seems to read llms.txt 🤷‍♂️
 </a></li>
 </ul>

@@ -16,6 +16,7 @@
 
 <p>
     You can make a "two-binding" between state and most Html element's attributes, using the <a
+        target="_blank"
         href="https://svelte.dev/docs/svelte/bind">bind:</a
     >
     syntax. This ensure the element's value and the state's value is <i>always the same.</i>
@@ -29,7 +30,9 @@
 <p>
     Note the <b>items.push()</b> line, modifying pritive array and objects also triggers re-render.
     Wrappers for
-    <a href="https://svelte.dev/docs/svelte/svelte-reactivity">other data structures</a> is also provided.
+    <a target="_blank" href="https://svelte.dev/docs/svelte/svelte-reactivity"
+        >other data structures</a
+    > is also provided.
 </p>
 
 <p>

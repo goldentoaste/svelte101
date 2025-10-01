@@ -27,15 +27,15 @@
         <span>
             <span class="inline">Stormhacks 2025 Site</span>
         </span>
-        <a href="https://github.com/sfusurge/SH25-final">https://github.com/sfusurge/SH25-final</a>
-        <a href="https://www.stormhacks.com/">https://www.stormhacks.com/</a>
+        <a target="_blank" href="https://github.com/sfusurge/SH25-final">https://github.com/sfusurge/SH25-final</a>
+        <a target="_blank" href="https://www.stormhacks.com/">https://www.stormhacks.com/</a>
     </div>
 
     <div>
         <span>
             <span class="inline">Sparkjam Site</span>
-        </span><a href="https://sparkjam.design/">https://sparkjam.design/</a>
-        <a href="https://github.com/sfusurge/sparkjam">https://github.com/sfusurge/sparkjam</a>
+        </span><a target="_blank" href="https://sparkjam.design/">https://sparkjam.design/</a>
+        <a target="_blank" href="https://github.com/sfusurge/sparkjam">https://github.com/sfusurge/sparkjam</a>
     </div>
 
     <div>

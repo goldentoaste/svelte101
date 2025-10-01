@@ -9,7 +9,7 @@
 
 <p>
     A common way to style elements is by adding and removing classes. Svelte
-    uses <a href="https://svelte.dev/docs/svelte/class">{"class:name={condition}"}</a> to easily do so. The condition may be anything
+    uses <a target="_blank" href="https://svelte.dev/docs/svelte/class">{"class:name={condition}"}</a> to easily do so. The condition may be anything
     that evals to a boolean, or if there is a variable with same name as the class,
     the condition may be missing.
 </p>

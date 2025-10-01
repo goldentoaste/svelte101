@@ -12,13 +12,13 @@
     have Js in html, instead of html mixed in js functions like with JSX.
 
     <br /> <br />
-    Svelte 5 introduced <a href="https://svelte.dev/docs/svelte/what-are-runes">"runes"</a> for state
+    Svelte 5 introduced <a target="_blank" href="https://svelte.dev/docs/svelte/what-are-runes">"runes"</a> for state
     managing states, which is similar to their React counter part, but much more powerful.
 </p>
 
 <Prism language="svelte" source="">
     {`<!-- <script> contains JS related things -->
-<script lang="ts"> 
+<script lang="ts">
     import stuff from '$lib/bleh';  // imports goes here
     import { onMount } from "svelte";
 
@@ -34,8 +34,8 @@
         xyz: [1, 2, 3]
     });
     // $derived() rune to get derived states, dependencies in inferred!
-    let xyzItems = $derived(complexState.xyz.length); 
-    
+    let xyzItems = $derived(complexState.xyz.length);
+
     $effect(()=>{
         // use reactive states to do things outside of the state mangement model
         alert(\`xyz now has \${xyzItems} items!\`)
@@ -54,7 +54,7 @@
 <\/h1>
 
 <!-- Svelte has conditional rendering with new syntax, 'show' is a boolean that decides if the content is visible. -->
-{#if show} 
+{#if show}
     <div class="big"><!-- ... --><\/div>
 {/if}
 

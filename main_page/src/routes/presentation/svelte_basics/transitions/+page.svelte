@@ -11,12 +11,12 @@
 <h1 class="title">Transition:</h1>
 
 <p>
-    Svelte provides multiple <a href="https://svelte.dev/docs/svelte/transition"
+    Svelte provides multiple <a target="_blank" href="https://svelte.dev/docs/svelte/transition"
         >transition effects</a
     >
     out of the box. They will play whenever an element with transitions is created/destroyed. You
     can also write
-    <a href="https://svelte.dev/docs/svelte/transition#Custom-transition-functions">your own.</a>
+    <a target="_blank" href="https://svelte.dev/docs/svelte/transition#Custom-transition-functions">your own.</a>
 </p>
 
 <p>
