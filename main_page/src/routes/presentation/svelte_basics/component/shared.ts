@@ -1,3 +1,5 @@
+
+export const componentScript = `<!-- SpookyButton.svelte -->
 <script lang="ts">
     import type { Snippet } from "svelte";
     interface Props {
@@ -9,10 +11,11 @@
     let { ghostName = "", onclick, children }: Props = $props();
 </script>
 
-<!-- forward the on:click event by declare but handling it -->
+<!-- forward the onclick event by declare but handling it -->
 <button {onclick}>
     {ghostName} says: {@render children?.()}
 </button>
+
 
 <style>
     button {
@@ -23,9 +26,9 @@
         margin: 1rem;
         transition: all 0.3s ease-out;
     }
-    button:hover {
-        /* button appears on hover */
+    button:hover { /* button appears on hover */
         background-color: var(--fg1);
-        color: var(--bg2);
+        color:var(--bg2);
     }
 </style>
+`

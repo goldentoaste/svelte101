@@ -87,8 +87,12 @@
                     href: "component",
                 },
                 {
-                    title: "Custom Events",
-                    href: "custom_events",
+                    title: "Component Bindings",
+                    href: "component_bindable",
+                },
+                {
+                    title: "Universal Reactivity",
+                    href: "universal_reactivity",
                 },
             ],
         },

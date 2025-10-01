@@ -8,51 +8,58 @@
     let showBlur = $state(false);
 </script>
 
-<h1 class="title">Transitions</h1>
+<h1 class="title">Transition:</h1>
 
 <p>
-    Svelte provides multiple transitions for DOM elements out of the box (you
-    write your own too!). Transitions plays whenever the element is created for
-    removed (with conditional rendering usually).
+    Svelte provides multiple <a href="https://svelte.dev/docs/svelte/transition"
+        >transition effects</a
+    >
+    out of the box. They will play whenever an element with transitions is created/destroyed. You
+    can also write
+    <a href="https://svelte.dev/docs/svelte/transition#Custom-transition-functions">your own.</a>
 </p>
 
 <p>
-    Transitions are applied with <span class="inline">{"transition:trans_func={{trans_params}}"}</span>. You can also use "in:" and "out:" to only play the animation
-    when the element is created or detroyed.
+    Transitions are applied with <span class="inline"
+        >{"transition:trans_func={{trans_params}}"}</span
+    >. You can also use <b>in:</b> and <b>out:</b> to only play the animation when the element is created or
+    detroyed.
 </p>
 
-<Prism language='svelte'>
-    {`<script>  
+<Prism language="svelte">
+    {`<script>
     import { fly, blur, fade } from "svelte/transition";
-    let showFade = false;
-    let showFly = false;
-    let showBlur = false;
+
+    let showFade = $state(false);
+    let showFly = $state(false);
+    let showBlur = $state(false);
 <\/script>
 
-<button on:click={(e) => (showFade = !showFade)}>Toggle Fade</button>
-<button on:click={(e) => (showFly = !showFly)}>Toggle Fly</button>
-<button on:click={(e) => (showBlur = !showBlur)}>Toggle Blur</button>
+<button onclick={() => (showFade = !showFade)}>Toggle Fade</button>
+<button onclick={() => (showFly = !showFly)}>Toggle Fly</button>
+
+<button onclick={() => (showBlur = !showBlur)}>Toggle Blur</button>
 
 {#if showFade}
-    <div transition:fade>Fade</div>
+    <div class="block" transition:fade>Fade</div>
 {/if}
 
 {#if showFly}
-<!-- transition functions takes params, for example fly has x/y for where its flying in from -->
-    <div transition:fly={{duration:300, x:-50, y:-100}}>Fly</div>
+    <!-- transition functions can takes params, for example fly has x/y for where its flying in from -->
+    <div class="block" transition:fly={{ duration: 300, x: -50, y: -100 }}>Fly</div>
 {/if}
 
 {#if showBlur}
-    <div transition:blur>Blur</div>
+    <div class="block" transition:blur>Blur</div>
 {/if}
 `}
 </Prism>
 
 <Frame>
-    <button onclick={(e) => (showFade = !showFade)}>Toggle Fade</button>
-    <button onclick={(e) => (showFly = !showFly)}>Toggle Fly</button>
+    <button onclick={() => (showFade = !showFade)}>Toggle Fade</button>
+    <button onclick={() => (showFly = !showFly)}>Toggle Fly</button>
 
-    <button onclick={(e) => (showBlur = !showBlur)}>Toggle Blur</button>
+    <button onclick={() => (showBlur = !showBlur)}>Toggle Blur</button>
 
     <div class="hor">
         {#if showFade}
@@ -61,12 +68,7 @@
 
         {#if showFly}
             <!-- transition functions takes params, for example fly has x/y for where its flying in from -->
-            <div
-                class="block"
-                transition:fly={{ duration: 300, x: -50, y: -100 }}
-            >
-                Fly
-            </div>
+            <div class="block" transition:fly={{ duration: 300, x: -50, y: -100 }}>Fly</div>
         {/if}
 
         {#if showBlur}

@@ -1,65 +1,69 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
-
     import Prism from "svelte-prism";
     import Frame from "$lib/components/Frame.svelte";
 
     let counter = $state(0);
     let double = $derived(counter * 2); // double will be updated whenever 'counter' changes.
 
-    run(() => {
-        // this block only runs when 'counter' changes, since 'double' is a derived state.
-        console.log(`The counter is reading: ${counter}, double is ${double}.`);
-        // do other stuff here.
+    $effect(() => {
+        if (double > 20) {
+            alert(`Your number is over 20 now: ${double}`);
+        }
     });
+
+    $inspect("Counter is: ", counter, "Doubled is: ", double, "Is double over 20?: ", double > 20);
 </script>
 
-<h1 class="title">Reactivity and Events</h1>
+<h1 class="title">$Derived states and Reactive $Effects</h1>
 
 <p>
-    Declared variables are all "Reactive by default", the compile checks if any
-    DOM elements depends on it, and updates the element when the variables
-    changes.
+    Derived states can be declared with <b>$derived(...)</b>, or by using
+    <a href="https://svelte.dev/docs/svelte/$derived#$derived.by">$derived.by(()=>...)</a>. Contents
+    of the derived state is updated automatically whenever its dependencies are changed. (This is
+    very similar to useMemo in React)
 </p>
 
 <p>
-    Variables can also depend on each other using the <span class="inline">$:</span> syntax (like
-    useMemo). You can run a block of code when variables inside changes(kinda
-    like useEffect).
+    When we want to <i>do things</i> whenever a state is changed, we can use a
+    <a href="https://svelte.dev/docs/svelte/$effect">$effect(()=>...)</a>, the callback in $effect
+    will run whenever states within changes.(This is similar to useEffect in React)
 </p>
 
 <p>
-    To interact with the variables, we can listen to mouse click event to change
-    the counter. Event handlers uses the <span class="inline">on:event_name</span> syntax
+    Note: use <a href="https://svelte.dev/docs/svelte/$inspect">$inspect(var1, var2...)</a> instead of
+    a effect to log a state whenever it changes! ($inspects are automatically removed when deployed to
+    prod.)
 </p>
-
 
 <Prism language="svelte">
-    {
-`<script>
-    let counter = 0;
-    $: double = counter * 2; // double will be updated whenever 'counter' changes.
+    {`<script>
+    let counter = $state(0);
+    let double = $derived(counter * 2); // double will be updated whenever 'counter' changes.
 
-    $: {
-        // this block only runs when 'counter' changes, since 'double' is a derived state.
-        console.log(\`The counter is reading: \${counter}, double is \${double}.\`);
-        // do other stuff here.
-    }  
+    $effect(() => {
+        if (double > 20){
+            alert(\`Your number is over 20 now: \${double}\`)
+        }
+    });
+
+    $inspect("Counter is: ", counter, "Doubled is: ", double, "Is double over 20?: ", double > 20);
 <\/script>
 
 <p style="margin: 0.5rem;">
     Counter is current: {counter}, doubled is {double}
 </p>
-<button on:click={(e) => (counter += 1)}>Plus</button>
-<button on:click={(e) => (counter -= 1)}>Minus</button>
-`
-    }
+
+<!-- note the state, counter, is updated as if its a regular variable, instead of having to do useState/setState -->
+<button onclick={(e) => (counter += 1)}>Plus</button>
+<button onclick={(e) => (counter -= 1)}>Minus</button>
+`}
 </Prism>
 
 <Frame>
     <p style="margin: 0.5rem;">
         Counter is current: {counter}, doubled is {double}
     </p>
+    <!-- note the state, counter, is updated as if its a regular variable, instead of having to do useState/setState -->
     <button onclick={(e) => (counter += 1)}>Plus</button>
     <button onclick={(e) => (counter -= 1)}>Minus</button>
 </Frame>

@@ -1,6 +1,8 @@
 <script>
     import Frame from "$lib/components/Frame.svelte";
     import Prism from "svelte-prism";
+
+
     let showItem = $state(false);
     let foodType = $state("pizza");
 </script>
@@ -8,20 +10,20 @@
 <h1 class="title">Conditional Rendering (If block)</h1>
 
 <p>
-    Svelte uses the <span class="inline">{"{#if} and {#else:}"}</span> (an "if block") syntax to do conditional rendering. It
+    Svelte uses the <a href="https://svelte.dev/docs/svelte/if">{"{#if ...}"}</a> syntax to do conditional rendering. It
     is similar to if else statements in most languages and can be nested. This avoids
-    need for nested ternery like in JSX.
+    need for nested ternery like in JSX (🤮 {"{showA ? <CompA/> : (showB ? <CompB/> : '??')}... or how about {showA && <CompA/>} "}).
 </p>
 
 <Prism language="svelte">
     {`<script>
     let showItem = false;
-    let foodType = "pizza";    
+    let foodType = "pizza";
 <\/script>
 
-<button on:click={(e) => (showItem = !showItem)}>Toggle label</button>
+<button onclick={() => (showItem = !showItem)}>Toggle label</button>
 <button
-    on:click={(e) => (foodType = foodType === "pizza" ? "burger" : "pizza")}
+    onclick={() => (foodType = foodType === "pizza" ? "burger" : "pizza")}
 >
     Toggle food
 </button>
@@ -32,6 +34,8 @@
 
 {#if foodType === "pizza"}
     <p>I want pizza! 🍕</p>
+{:else if 5 < 2}
+    <p>???</p>
 {:else}
     <p>I actually want burger! 🍔</p>
 {/if}
@@ -39,9 +43,9 @@
 </Prism>
 
 <Frame>
-    <button onclick={(e) => (showItem = !showItem)}>Toggle label</button>
+    <button onclick={() => (showItem = !showItem)}>Toggle label</button>
     <button
-        onclick={(e) => (foodType = foodType === "pizza" ? "burger" : "pizza")}
+        onclick={() => (foodType = foodType === "pizza" ? "burger" : "pizza")}
     >
         Toggle food
     </button>
@@ -52,6 +56,8 @@
 
     {#if foodType === "pizza"}
         <p>I want pizza! 🍕</p>
+    {:else if 5 < 2}
+        <p>???</p>
     {:else}
         <p>I actually want burger! 🍔</p>
     {/if}

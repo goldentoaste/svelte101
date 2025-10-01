@@ -5,13 +5,15 @@
     const name = "svelte";
     let src = "/svelte.svg";
     let imageName = "svelte logo";
-    let rotated = $state(false);
+    let rotated = $state(true);
 
     let code = `\<script\>
     let name = "svelte";
     let src = "/svelte.svg";
     let imageName = "svelte logo";
 <\/script\>
+
+<h2>Hi, I am {name}!</h2>
 
 <img
     {src}

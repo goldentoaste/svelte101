@@ -9,7 +9,7 @@
 
 <p>
     A common way to style elements is by adding and removing classes. Svelte
-    uses <span class="inline">{"class:name={condition}"}</span> to easily do so. The condition may be anything
+    uses <a href="https://svelte.dev/docs/svelte/class">{"class:name={condition}"}</a> to easily do so. The condition may be anything
     that evals to a boolean, or if there is a variable with same name as the class,
     the condition may be missing.
 </p>
@@ -18,8 +18,8 @@
 <Prism language='svelte'>
     {
 `<script>
-    let color = "red";
-    let isBig = false;
+    let color = $state("red");
+    let isBig = $state(false);
 <\/script>
 
 <div
@@ -27,9 +27,9 @@
     class:red={color === "red"}
     class:green={color === "green"}
 
-    on:click={e=>isBig = !isBig}
-    on:mouseenter={e=>color='green'}
-    on:mouseleave={e=>color='red'}
+    onclick={e=>isBig = !isBig}
+    onmouseenter={e=>color='green'}
+    onmouseleave={e=>color='red'}
 >
     BOX
 </div>

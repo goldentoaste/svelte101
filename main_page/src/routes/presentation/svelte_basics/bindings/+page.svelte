@@ -3,65 +3,104 @@
 
     import Frame from "$lib/components/Frame.svelte";
 
-    let text = $state("");
+    interface CheckListItem {
+        name: string;
+        checked: boolean;
+    }
 
-    let items: string[] = $state([]);
+    let text = $state("");
+    let items: CheckListItem[] = $state([]);
 </script>
 
 <h1 class="title">Variable Bindings and More on Lists</h1>
 
 <p>
-    Properties of DOM elements and components can be retrieved using <span class="inline">{"bind:<prop_name>=<var_name>"}</span>.
-    Usually throguh attributes, data flow from parent to child. "bind:" provides
-    a easy way to propagate data from child to parent.
+    You can make a "two-binding" between state and most Html element's attributes, using the <a
+        href="https://svelte.dev/docs/svelte/bind">bind:</a
+    >
+    syntax. This ensure the element's value and the state's value is <i>always the same.</i>
 </p>
 
 <p>
-    In prev slide, #each is used render a static list. #each is also reactive,
-    similar to #if, however its not enough to modify the list, you will need to
-    re-assign the list back to variable. Reactvity in Svelte is based on
-    variable assignment. (This is being improved in Svelte5)
+    The following example we use <b>{"bind:value={text}"}</b> to read the input's <i>value</i> and
+    puts it in state <i>text</i>. We can also clear the input field by clearing the variable.
 </p>
 
-<p>The below example shows bind: and #each working together.</p>
+<p>
+    Note the <b>items.push()</b> line, modifying pritive array and objects also triggers re-render.
+    Wrappers for
+    <a href="https://svelte.dev/docs/svelte/svelte-reactivity">other data structures</a> is also provided.
+</p>
 
+<p>
+    Also note the line <b>{"bind:checked={item.checked}"}</b>, you can also bind to list item or
+    object props.
+</p>
 <Prism language="svelte">
-    {`<script>
-    let text = "";
-    let items = [];    
+    {`<script lang="ts">
+    interface CheckListItem {
+        name: string;
+        checked: boolean;
+    }
+
+    let text = $state("");
+    let items: CheckListItem[] = $state([]);
 <\/script>
 
-<form on:submit={() => {
-        items = [...items, text];
-        text = "";
-    }}>
+<form
+    onsubmit={() => {
+        items.push({
+            checked: false,
+            name: text,
+        }); // pushing on a array within $state() also triggers ui update!
+        text = ""; // clear the input field
+    }}
+>
     <input type="text" bind:value={text} placeholder="type here!" />
-    <input type="submit" value="Add"/> 
+    <input type="submit" value="Add" />
 </form>
-
 
 <div class="ver">
     {#each items as item, index}
-        <span> {index + 1}. {item}</span>
+        <span class:checked={item.checked}>
+            <!-- you can also bind to list items! -->
+            <input type="checkbox" bind:checked={item.checked} />
+            {index + 1}.
+            {item.name}</span
+        >
     {/each}
 </div>
 `}
 </Prism>
 
 <Frame>
-  
-    <form onsubmit={() => {
-            items = [...items, text];
-            text = "";
-        }}>
+    <form
+        onsubmit={() => {
+            items.push({
+                checked: false,
+                name: text,
+            }); // pushing on a array within $state() also triggers ui update!
+            text = ""; // clear the input field
+        }}
+    >
         <input type="text" bind:value={text} placeholder="type here!" />
-        <input type="submit" value="Add"/> 
+        <input type="submit" value="Add" />
     </form>
-    
 
     <div class="ver">
         {#each items as item, index}
-            <span> {index + 1}. {item}</span>
+            <span class:checked={item.checked}>
+                <!-- you can also bind to list items! -->
+                <input type="checkbox" bind:checked={item.checked} />
+                {index + 1}.
+                {item.name}</span
+            >
         {/each}
     </div>
 </Frame>
+
+<style>
+    .checked {
+        text-decoration: line-through;
+    }
+</style>
