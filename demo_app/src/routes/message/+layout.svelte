@@ -1,9 +1,11 @@
-<div class="todoRoot">
+<div class="root">
+    <!-- todoRoot provides styling for the page. -->
+    <!-- this 'slot' will be replace by the page -->
     <slot />
 </div>
 
 <style>
-    .todoRoot {
+    .root {
         display: flex;
         justify-content: center;
         align-items: center;
