@@ -17,8 +17,8 @@
 
 <Prism language="svelte">
     {`<script>
-    let showItem = false;
-    let foodType = "pizza";
+    let showItem = $state(false);
+    let foodType = $state("pizza");
 <\/script>
 
 <button onclick={() => (showItem = !showItem)}>Toggle label</button>
